@@ -52,6 +52,23 @@ def test_chained_code_animates_each_stage_with_code_ranges():
     assert code[second["startCol"] - 1:second["endCol"] - 1] == ".groupby('city')['salary'].mean()"
 
 
+def test_named_agg_keeps_and_folds_its_source_column():
+    res = runner.run("result = df.groupby('city').agg(total=('salary', 'sum'), n=('salary', 'count'))",
+                     {"df": DF}, run_id="n")
+    frames = res["frames"]
+    before = next(f for f in frames if f["primitive"] == "collapse")
+    kept = frames[frames.index(before) - 1]["tables"][0]
+    assert [c["name"] for c in kept["columns"]] == ["city", "salary"]
+    targets = {g["target"] for g in before["tables"][0]["ghosts"] if g["key"].endswith("df.salary")}
+    assert targets and all(t.endswith(".total") for t in targets)
+
+
+def test_groupby_filter_shows_groups_then_drops_rows():
+    p = prims("result = df.groupby('city').filter(lambda g: len(g) >= 2)")
+    assert p.index("cluster") < p.index("fade_out")
+    assert "collapse" not in p
+
+
 def test_errors_report_the_user_line():
     res = runner.run("x = 1\nresult = df['nope']", {"df": DF}, run_id="e")
     assert res["ok"] is False

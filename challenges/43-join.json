@@ -1,14 +1,14 @@
 {
-  "slug": "merge-left",
-  "order": 37,
+  "slug": "join",
+  "order": 43,
   "level": 7,
-  "title": "Keep all left rows",
-  "method": "merge left",
+  "title": "Join on the index",
+  "method": "join",
   "category": "Combine",
   "language": "python",
   "library": "pandas",
   "source": "official",
-  "task": "Combine `left` with `right` on `dept_id`, keeping every employee even without a department.",
+  "task": "`right` is indexed by `dept_id`. Attach each employee's department name using `join`.",
   "inputs": {
     "left": {
       "type": "dataframe",
@@ -42,23 +42,25 @@
     "right": {
       "type": "dataframe",
       "columns": [
-        "dept_id",
         "dept"
       ],
       "data": [
         [
-          1,
           "Sales"
         ],
         [
-          2,
           "IT"
         ],
         [
-          4,
           "Legal"
         ]
-      ]
+      ],
+      "index": [
+        1,
+        2,
+        4
+      ],
+      "index_name": "dept_id"
     }
   },
   "target": {
@@ -97,8 +99,8 @@
     ]
   },
   "starter_code": "result = ",
-  "hint_1": "Same merge, but tell it which side must keep all its rows.",
-  "hint_2": "result = left.merge(right, on=___, how=____)",
+  "hint_1": "`join` matches a column of the left table against the index of the right table.",
+  "hint_2": "result = left.____(right, on=___)",
   "example": {
     "inputs": {
       "orders": {
@@ -125,30 +127,30 @@
       "customers": {
         "type": "dataframe",
         "columns": [
-          "cust",
           "city"
         ],
         "data": [
           [
-            "c1",
             "Rome"
           ],
           [
-            "c2",
             "Oslo"
           ]
-        ]
+        ],
+        "index": [
+          "c1",
+          "c2"
+        ],
+        "index_name": "cust"
       }
     },
-    "code": "result = orders.merge(customers, on='cust', how='left')",
+    "code": "result = orders.join(customers, on='cust')",
     "note": ""
   },
-  "reference_solution": "result = left.merge(right, on='dept_id', how='left')",
-  "why": "A left merge keeps every row of the left table. Where no partner exists, the right-side columns are filled with NaN.",
-  "docs_url": "https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.merge.html",
+  "reference_solution": "result = left.join(right, on='dept_id')",
+  "why": "`join` is a left merge against the other table's index. It keeps every left row and its index.",
+  "docs_url": "https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.join.html",
   "checker_type": "pandas_equal",
-  "checker_options": {
-    "check_index": false
-  },
+  "checker_options": {},
   "visual_type": "connect"
 }

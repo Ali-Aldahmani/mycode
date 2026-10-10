@@ -1,0 +1,123 @@
+{
+  "slug": "groupby-count",
+  "order": 35,
+  "level": 6,
+  "title": "Count what is there",
+  "method": "groupby + count",
+  "category": "Summarize",
+  "language": "python",
+  "library": "pandas",
+  "source": "official",
+  "task": "For each shop, return how many reviews have a `stars` value. Reviews with missing stars must not be counted.",
+  "inputs": {
+    "df": {
+      "type": "dataframe",
+      "columns": [
+        "shop",
+        "customer",
+        "stars"
+      ],
+      "data": [
+        [
+          "north",
+          "Ana",
+          5
+        ],
+        [
+          "south",
+          "Ben",
+          null
+        ],
+        [
+          "north",
+          "Cleo",
+          3
+        ],
+        [
+          "east",
+          "Dev",
+          4
+        ],
+        [
+          "south",
+          "Eva",
+          2
+        ],
+        [
+          "north",
+          "Finn",
+          null
+        ],
+        [
+          "east",
+          "Gus",
+          null
+        ],
+        [
+          "south",
+          "Hana",
+          5
+        ]
+      ]
+    }
+  },
+  "target": {
+    "type": "series",
+    "name": "stars",
+    "data": [
+      1,
+      2,
+      2
+    ],
+    "index": [
+      "east",
+      "north",
+      "south"
+    ],
+    "index_name": "shop"
+  },
+  "starter_code": "result = ",
+  "hint_1": "Group by shop and use the aggregation that skips missing values. Its sibling counts every row, missing or not.",
+  "hint_2": "result = df.groupby(___)[___].___()",
+  "example": {
+    "inputs": {
+      "visits": {
+        "type": "dataframe",
+        "columns": [
+          "page",
+          "seconds"
+        ],
+        "data": [
+          [
+            "home",
+            30
+          ],
+          [
+            "blog",
+            null
+          ],
+          [
+            "home",
+            12
+          ],
+          [
+            "blog",
+            45
+          ],
+          [
+            "home",
+            null
+          ]
+        ]
+      }
+    },
+    "code": "result = visits.groupby('page')['seconds'].count()",
+    "note": "`size()` would give home 3 and blog 2, because it also counts the rows where `seconds` is missing."
+  },
+  "reference_solution": "result = df.groupby('shop')['stars'].count()",
+  "why": "`count()` counts the non-missing values in each group, while `size()` counts every row. They only differ when the column has NaN, which is exactly when the difference matters.",
+  "docs_url": "https://pandas.pydata.org/docs/reference/api/pandas.api.typing.SeriesGroupBy.count.html",
+  "checker_type": "pandas_equal",
+  "checker_options": {},
+  "visual_type": "collapse"
+}

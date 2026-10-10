@@ -1,0 +1,127 @@
+{
+  "slug": "named-agg",
+  "order": 37,
+  "level": 6,
+  "title": "Name your results",
+  "method": "named aggregation",
+  "category": "Summarize",
+  "language": "python",
+  "library": "pandas",
+  "source": "official",
+  "task": "For each team, return two columns: `total` (the sum of `points`) and `best` (the highest `points`), in that order.",
+  "inputs": {
+    "df": {
+      "type": "dataframe",
+      "columns": [
+        "team",
+        "player",
+        "points"
+      ],
+      "data": [
+        [
+          "red",
+          "Ana",
+          12
+        ],
+        [
+          "blue",
+          "Ben",
+          7
+        ],
+        [
+          "red",
+          "Cleo",
+          9
+        ],
+        [
+          "blue",
+          "Dev",
+          15
+        ],
+        [
+          "green",
+          "Eva",
+          11
+        ],
+        [
+          "red",
+          "Finn",
+          4
+        ]
+      ]
+    }
+  },
+  "target": {
+    "type": "dataframe",
+    "columns": [
+      "total",
+      "best"
+    ],
+    "data": [
+      [
+        22,
+        15
+      ],
+      [
+        11,
+        11
+      ],
+      [
+        25,
+        12
+      ]
+    ],
+    "index": [
+      "blue",
+      "green",
+      "red"
+    ],
+    "index_name": "team"
+  },
+  "starter_code": "result = ",
+  "hint_1": "`agg` can take keyword arguments: the keyword is the new column name, the value says which column and which function.",
+  "hint_2": "result = df.groupby(___).agg(total=(___, ___), best=(___, ___))",
+  "example": {
+    "inputs": {
+      "orders": {
+        "type": "dataframe",
+        "columns": [
+          "city",
+          "amount"
+        ],
+        "data": [
+          [
+            "Lyon",
+            20
+          ],
+          [
+            "Paris",
+            35
+          ],
+          [
+            "Lyon",
+            15
+          ],
+          [
+            "Paris",
+            5
+          ],
+          [
+            "Paris",
+            10
+          ]
+        ]
+      }
+    },
+    "code": "result = orders.groupby('city').agg(revenue=('amount', 'sum'), orders=('amount', 'count'))",
+    "note": ""
+  },
+  "reference_solution": "result = df.groupby('team').agg(total=('points', 'sum'), best=('points', 'max'))",
+  "why": "Named aggregation, `new_name=(column, function)`, gives flat, readable column names in one step, with no MultiIndex columns and no rename afterwards.",
+  "docs_url": "https://pandas.pydata.org/docs/user_guide/groupby.html#named-aggregation",
+  "checker_type": "pandas_equal",
+  "checker_options": {
+    "check_column_order": true
+  },
+  "visual_type": "collapse"
+}

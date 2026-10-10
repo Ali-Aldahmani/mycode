@@ -1,6 +1,6 @@
 {
   "slug": "pivot",
-  "order": 40,
+  "order": 44,
   "level": 8,
   "title": "Long to wide",
   "method": "pivot",

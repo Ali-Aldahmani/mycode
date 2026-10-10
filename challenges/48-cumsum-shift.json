@@ -1,6 +1,6 @@
 {
   "slug": "cumsum-shift",
-  "order": 44,
+  "order": 48,
   "level": 9,
   "title": "Previous value and running total",
   "method": "cumsum / shift",

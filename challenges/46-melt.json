@@ -1,6 +1,6 @@
 {
   "slug": "melt",
-  "order": 42,
+  "order": 46,
   "level": 8,
   "title": "Wide to long",
   "method": "melt",

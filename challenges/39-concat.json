@@ -1,6 +1,6 @@
 {
   "slug": "concat",
-  "order": 35,
+  "order": 39,
   "level": 7,
   "title": "Stack tables",
   "method": "concat",

@@ -1,6 +1,6 @@
 {
   "slug": "pivot-table",
-  "order": 41,
+  "order": 45,
   "level": 8,
   "title": "Pivot with totals",
   "method": "pivot_table",

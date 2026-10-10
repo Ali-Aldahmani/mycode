@@ -1,14 +1,14 @@
 {
-  "slug": "merge-outer",
-  "order": 38,
+  "slug": "merge-left",
+  "order": 41,
   "level": 7,
-  "title": "Keep everything",
-  "method": "merge outer",
+  "title": "Keep all left rows",
+  "method": "merge left",
   "category": "Combine",
   "language": "python",
   "library": "pandas",
   "source": "official",
-  "task": "Combine `left` with `right` on `dept_id`, keeping rows from both sides even without a match.",
+  "task": "Combine `left` with `right` on `dept_id`, keeping every employee even without a department.",
   "inputs": {
     "left": {
       "type": "dataframe",
@@ -75,19 +75,14 @@
         "Sales"
       ],
       [
-        "Cleo",
-        1,
-        "Sales"
-      ],
-      [
         "Ben",
         2,
         "IT"
       ],
       [
-        "Eva",
-        2,
-        "IT"
+        "Cleo",
+        1,
+        "Sales"
       ],
       [
         "Dev",
@@ -95,15 +90,15 @@
         null
       ],
       [
-        null,
-        4,
-        "Legal"
+        "Eva",
+        2,
+        "IT"
       ]
     ]
   },
   "starter_code": "result = ",
-  "hint_1": "Ask the merge to keep unmatched rows from both tables.",
-  "hint_2": "result = left.merge(right, on=___, how=_____)",
+  "hint_1": "Same merge, but tell it which side must keep all its rows.",
+  "hint_2": "result = left.merge(right, on=___, how=____)",
   "example": {
     "inputs": {
       "orders": {
@@ -139,17 +134,17 @@
             "Rome"
           ],
           [
-            "c3",
+            "c2",
             "Oslo"
           ]
         ]
       }
     },
-    "code": "result = orders.merge(customers, on='cust', how='outer')",
+    "code": "result = orders.merge(customers, on='cust', how='left')",
     "note": ""
   },
-  "reference_solution": "result = left.merge(right, on='dept_id', how='outer')",
-  "why": "An outer merge is the union: matched rows are combined, and unmatched rows from either side are kept with NaN for the missing side.",
+  "reference_solution": "result = left.merge(right, on='dept_id', how='left')",
+  "why": "A left merge keeps every row of the left table. Where no partner exists, the right-side columns are filled with NaN.",
   "docs_url": "https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.merge.html",
   "checker_type": "pandas_equal",
   "checker_options": {

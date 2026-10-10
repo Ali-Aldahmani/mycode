@@ -1,0 +1,141 @@
+{
+  "slug": "groupby-multi-key",
+  "order": 36,
+  "level": 6,
+  "title": "Group by two columns",
+  "method": "groupby([a, b])",
+  "category": "Summarize",
+  "language": "python",
+  "library": "pandas",
+  "source": "official",
+  "task": "Return the total `units` sold for every combination of `region` and `product`.",
+  "inputs": {
+    "df": {
+      "type": "dataframe",
+      "columns": [
+        "region",
+        "product",
+        "units"
+      ],
+      "data": [
+        [
+          "east",
+          "tea",
+          4
+        ],
+        [
+          "west",
+          "tea",
+          6
+        ],
+        [
+          "east",
+          "coffee",
+          3
+        ],
+        [
+          "east",
+          "tea",
+          5
+        ],
+        [
+          "west",
+          "coffee",
+          8
+        ],
+        [
+          "west",
+          "tea",
+          2
+        ],
+        [
+          "east",
+          "coffee",
+          7
+        ]
+      ]
+    }
+  },
+  "target": {
+    "type": "series",
+    "name": "units",
+    "data": [
+      10,
+      9,
+      8,
+      8
+    ],
+    "index": [
+      [
+        "east",
+        "coffee"
+      ],
+      [
+        "east",
+        "tea"
+      ],
+      [
+        "west",
+        "coffee"
+      ],
+      [
+        "west",
+        "tea"
+      ]
+    ],
+    "index_name": [
+      "region",
+      "product"
+    ]
+  },
+  "starter_code": "result = ",
+  "hint_1": "A group can be defined by more than one column: pass all of them, and each unique pair becomes one group.",
+  "hint_2": "result = df.groupby([___, ___])[___].___()",
+  "example": {
+    "inputs": {
+      "scores": {
+        "type": "dataframe",
+        "columns": [
+          "school",
+          "year",
+          "score"
+        ],
+        "data": [
+          [
+            "A",
+            1,
+            70
+          ],
+          [
+            "B",
+            1,
+            64
+          ],
+          [
+            "A",
+            2,
+            81
+          ],
+          [
+            "A",
+            1,
+            90
+          ],
+          [
+            "B",
+            2,
+            75
+          ]
+        ]
+      }
+    },
+    "code": "result = scores.groupby(['school', 'year'])['score'].mean()",
+    "note": ""
+  },
+  "reference_solution": "result = df.groupby(['region', 'product'])['units'].sum()",
+  "why": "Grouping by a list of columns makes one group per unique combination. The keys become a MultiIndex with one level per column; `.reset_index()` turns them back into ordinary columns.",
+  "docs_url": "https://pandas.pydata.org/docs/user_guide/groupby.html#splitting-an-object-into-groups",
+  "checker_type": "pandas_equal",
+  "checker_options": {},
+  "visual_type": "collapse"
+}

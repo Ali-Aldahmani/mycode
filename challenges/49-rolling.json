@@ -1,6 +1,6 @@
 {
   "slug": "rolling",
-  "order": 45,
+  "order": 49,
   "level": 9,
   "title": "Moving average",
   "method": "rolling",

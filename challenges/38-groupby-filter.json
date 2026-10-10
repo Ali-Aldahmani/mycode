@@ -1,0 +1,145 @@
+{
+  "slug": "groupby-filter",
+  "order": 38,
+  "level": 6,
+  "title": "Keep whole groups",
+  "method": "groupby + filter",
+  "category": "Summarize",
+  "language": "python",
+  "library": "pandas",
+  "source": "official",
+  "task": "Keep every row of the teams whose total `points` is more than 20. Drop all the rows of the other teams.",
+  "inputs": {
+    "df": {
+      "type": "dataframe",
+      "columns": [
+        "team",
+        "player",
+        "points"
+      ],
+      "data": [
+        [
+          "red",
+          "Ana",
+          12
+        ],
+        [
+          "blue",
+          "Ben",
+          7
+        ],
+        [
+          "red",
+          "Cleo",
+          9
+        ],
+        [
+          "green",
+          "Dev",
+          15
+        ],
+        [
+          "blue",
+          "Eva",
+          6
+        ],
+        [
+          "green",
+          "Finn",
+          8
+        ],
+        [
+          "red",
+          "Gus",
+          4
+        ]
+      ]
+    }
+  },
+  "target": {
+    "type": "dataframe",
+    "columns": [
+      "team",
+      "player",
+      "points"
+    ],
+    "data": [
+      [
+        "red",
+        "Ana",
+        12
+      ],
+      [
+        "red",
+        "Cleo",
+        9
+      ],
+      [
+        "green",
+        "Dev",
+        15
+      ],
+      [
+        "green",
+        "Finn",
+        8
+      ],
+      [
+        "red",
+        "Gus",
+        4
+      ]
+    ],
+    "index": [
+      0,
+      2,
+      3,
+      5,
+      6
+    ]
+  },
+  "starter_code": "result = ",
+  "hint_1": "The decision is made once per group, from the whole group, and then the group's rows are kept or dropped together. The result has the original rows, not one row per team.",
+  "hint_2": "result = df.groupby(___).filter(lambda g: g[___].___() > ___)",
+  "example": {
+    "inputs": {
+      "sales": {
+        "type": "dataframe",
+        "columns": [
+          "shop",
+          "amount"
+        ],
+        "data": [
+          [
+            "north",
+            20
+          ],
+          [
+            "south",
+            3
+          ],
+          [
+            "north",
+            15
+          ],
+          [
+            "south",
+            4
+          ],
+          [
+            "east",
+            40
+          ]
+        ]
+      }
+    },
+    "code": "result = sales.groupby('shop').filter(lambda g: len(g) >= 2)",
+    "note": "Keeps the shops with at least two sales: every north and south row stays, east goes."
+  },
+  "reference_solution": "result = df.groupby('team').filter(lambda g: g['points'].sum() > 20)",
+  "why": "`filter` runs your function once per group and keeps or drops the whole group. A row mask built with `transform` (`df[df.groupby('team')['points'].transform('sum') > 20]`) gives the same rows.",
+  "docs_url": "https://pandas.pydata.org/docs/user_guide/groupby.html#filtration",
+  "checker_type": "pandas_equal",
+  "checker_options": {},
+  "visual_type": "fade_out"
+}

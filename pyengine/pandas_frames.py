@@ -659,6 +659,14 @@ class PandasFrameGenerator:
         by = gb_step.args[0] if gb_step.args else gb_step.kwargs.get("by")
         keys = [by] if isinstance(by, str) else list(by) if isinstance(by, (list, tuple)) else []
         as_index = gb_step.kwargs.get("as_index", True)
+        if st.main.name == "filter":
+            # whole groups stay or go: show the groups, then the generic diff fades rows out
+            P = tdata(pv, self.ident_for(st.before_token, pv, f"s{st.index}in"))
+            rid_group = {P.rows[i]: g for g, members in enumerate(indices.values()) for i in members}
+            key_cols = [cid for cid in P.cols if P.names[cid] in {str(k) for k in keys}]
+            self.emit("cluster", f"{label}: rows get their group colour, each group is kept or dropped whole",
+                      [self.render(P, marks=Marks(groups=rid_group, cols={c: "focus" for c in key_cols}))])
+            return None
         return self.cluster_collapse(st, label, pv, nv, indices, keys, as_index)
 
     def value_counts(self, st: Stage, label: str) -> Ident | None:
@@ -734,6 +742,8 @@ class PandasFrameGenerator:
                 out_first_level.add(str(c[0]) if isinstance(c, tuple) else str(c))
         elif isinstance(raw, pd.Series) and raw.name is not None:
             out_first_level.add(str(raw.name[0]) if isinstance(raw.name, tuple) else str(raw.name))
+        sources = _agg_sources(st)
+        out_first_level.update(sources.values())
         value_cols = [cid for cid in P.cols if P.names[cid] in out_first_level and cid not in key_cols]
         keep_cols = [cid for cid in P.cols if cid in key_cols or cid in value_cols]
         if keep_cols != P.cols:
@@ -768,6 +778,9 @@ class PandasFrameGenerator:
             nm = N.names[cid]
             name_to_ncol.setdefault(nm, cid)
             name_to_ncol.setdefault(nm.split(" ")[0], cid)
+        for cid in ncols:
+            if N.names[cid] in sources:
+                name_to_ncol.setdefault(sources[N.names[cid]], cid)
         for r in ordered:
             g = rid_group[r]
             target_row = nrows[g]
@@ -1195,6 +1208,22 @@ class PandasFrameGenerator:
 
 
 # --------------------------------------------------------------------------- labels
+
+def _agg_sources(st: Stage) -> dict[str, str]:
+    """Output column -> input column for named aggregation:
+    `.agg(total=('points', 'sum'))`, or `['points'].agg(total='sum')`."""
+    step = st.main
+    if step.name not in ("agg", "aggregate") or not step.kwargs:
+        return {}
+    selected = next((s.key for s in st.steps if s.kind == "getitem" and isinstance(s.key, str)), None)
+    out: dict[str, str] = {}
+    for name, spec in step.kwargs.items():
+        if isinstance(spec, tuple) and len(spec) == 2:  # also pd.NamedAgg
+            out[str(name)] = str(spec[0])
+        elif selected is not None:
+            out[str(name)] = selected
+    return out
+
 
 def main_op(st: Stage) -> str:
     s = st.main

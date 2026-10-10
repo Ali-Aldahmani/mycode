@@ -69,7 +69,7 @@ export default function HomePage() {
           <div className="flex-1">
             <h1 className="text-2xl font-semibold text-white">Learn pandas by watching it work</h1>
             <p className="mt-1 text-sm text-neutral-400">
-              45 challenges, easy to hard. Each one unlocks the next. Every answer is animated so you see what your code did.
+              49 challenges, easy to hard. Each one unlocks the next. Every answer is animated so you see what your code did.
             </p>
           </div>
           {overall && (

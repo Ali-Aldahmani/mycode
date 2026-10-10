@@ -1,14 +1,14 @@
 {
-  "slug": "join",
-  "order": 39,
+  "slug": "merge-inner",
+  "order": 40,
   "level": 7,
-  "title": "Join on the index",
-  "method": "join",
+  "title": "Match rows (inner)",
+  "method": "merge inner",
   "category": "Combine",
   "language": "python",
   "library": "pandas",
   "source": "official",
-  "task": "`right` is indexed by `dept_id`. Attach each employee's department name using `join`.",
+  "task": "Combine employees (`left`) with departments (`right`) on `dept_id`, keeping only rows that match in both.",
   "inputs": {
     "left": {
       "type": "dataframe",
@@ -42,25 +42,23 @@
     "right": {
       "type": "dataframe",
       "columns": [
+        "dept_id",
         "dept"
       ],
       "data": [
         [
+          1,
           "Sales"
         ],
         [
+          2,
           "IT"
         ],
         [
+          4,
           "Legal"
         ]
-      ],
-      "index": [
-        1,
-        2,
-        4
-      ],
-      "index_name": "dept_id"
+      ]
     }
   },
   "target": {
@@ -87,11 +85,6 @@
         "Sales"
       ],
       [
-        "Dev",
-        3,
-        null
-      ],
-      [
         "Eva",
         2,
         "IT"
@@ -99,8 +92,8 @@
     ]
   },
   "starter_code": "result = ",
-  "hint_1": "`join` matches a column of the left table against the index of the right table.",
-  "hint_2": "result = left.____(right, on=___)",
+  "hint_1": "Join the two tables on their shared key column; the default kind of join keeps only matches.",
+  "hint_2": "result = left._____(right, on=___)",
   "example": {
     "inputs": {
       "orders": {
@@ -127,30 +120,30 @@
       "customers": {
         "type": "dataframe",
         "columns": [
+          "cust",
           "city"
         ],
         "data": [
           [
+            "c1",
             "Rome"
           ],
           [
+            "c2",
             "Oslo"
           ]
-        ],
-        "index": [
-          "c1",
-          "c2"
-        ],
-        "index_name": "cust"
+        ]
       }
     },
-    "code": "result = orders.join(customers, on='cust')",
+    "code": "result = orders.merge(customers, on='cust')",
     "note": ""
   },
-  "reference_solution": "result = left.join(right, on='dept_id')",
-  "why": "`join` is a left merge against the other table's index. It keeps every left row and its index.",
-  "docs_url": "https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.join.html",
+  "reference_solution": "result = left.merge(right, on='dept_id')",
+  "why": "An inner merge keeps a row only when its key exists on both sides. Dev (dept 3) and Legal (dept 4) have no partner, so they disappear.",
+  "docs_url": "https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.merge.html",
   "checker_type": "pandas_equal",
-  "checker_options": {},
+  "checker_options": {
+    "check_index": false
+  },
   "visual_type": "connect"
 }

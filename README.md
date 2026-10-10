@@ -3,13 +3,13 @@
 Learn pandas by watching it work. You write pandas code, it runs **in your
 browser** (Pyodide in a Web Worker), and a stage animates what your code
 actually did: rows fade out, slide, cluster and collapse, tables connect,
-cells move. 45 challenges, easy to hard, each one unlocking the next.
+cells move. 49 challenges, easy to hard, each one unlocking the next.
 
 ```
 /frontend     Vite + React + TS: the visual engine (player), challenge screen, path screen
 /backend      FastAPI + SQLAlchemy + Alembic: challenges, submissions, scores, progress
 /pyengine     the Python half of the visual engine (runs in Pyodide AND on the backend)
-/challenges   one JSON seed file per challenge (45)
+/challenges   one JSON seed file per challenge (49)
 docker-compose.yml
 ```
 
@@ -59,7 +59,7 @@ opens (about 5-10 s on the first visit, cached afterwards).
 
 | Page | What it is |
 | --- | --- |
-| `/` | The path: 45 challenges by level, lock state, best scores, averages per category |
+| `/` | The path: 49 challenges by level, lock state, best scores, averages per category |
 | `/c/<slug>` | A challenge: description, hints, submissions, editor, animated result |
 | `/lab` | The engine lab (Phase 1 prototype): sample operations on hard-coded tables, live mode |
 
@@ -67,7 +67,7 @@ opens (about 5-10 s on the first visit, cached afterwards).
 
 ```bash
 cd backend
-pytest                                   # API flow, scoring, validation, engine primitives (33 tests)
+pytest                                   # API flow, scoring, validation, engine primitives (35 tests)
 python -m scripts.validate_challenges    # validates every file in /challenges
 cd ../frontend && npm run typecheck
 ```
@@ -280,7 +280,7 @@ python -m scripts.seed
   cross-origin isolation, so stale playground runs are skipped before they
   start and their results are dropped if they finish late. A run over 10 s
   terminates and restarts the worker.
-* **Targets were generated, then reviewed.** The 45 targets were produced by
+* **Targets were generated, then reviewed.** The 49 targets were produced by
   running each reference solution (`build_target`) and checked by hand against
   their tasks. Alternative correct answers (e.g. `pd.merge(left, right)`,
   `df.assign(...)`, `astype(int)`, `groupby(...).size()` for value counts)

@@ -1,6 +1,6 @@
 {
   "slug": "unstack",
-  "order": 43,
+  "order": 47,
   "level": 8,
   "title": "Index level to columns",
   "method": "stack / unstack",
