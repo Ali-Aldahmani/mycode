@@ -1,0 +1,158 @@
+{
+  "slug": "isin",
+  "order": 10,
+  "level": 2,
+  "title": "Value in a list",
+  "method": "isin",
+  "category": "Pick",
+  "language": "python",
+  "library": "pandas",
+  "source": "official",
+  "task": "Keep the people who live in Rome or Oslo.",
+  "inputs": {
+    "df": {
+      "type": "dataframe",
+      "columns": [
+        "name",
+        "city",
+        "age",
+        "score"
+      ],
+      "data": [
+        [
+          "Ana",
+          "Paris",
+          34,
+          88
+        ],
+        [
+          "Ben",
+          "Rome",
+          28,
+          72
+        ],
+        [
+          "Cleo",
+          "Paris",
+          45,
+          95
+        ],
+        [
+          "Dev",
+          "Oslo",
+          31,
+          64
+        ],
+        [
+          "Eva",
+          "Rome",
+          52,
+          81
+        ],
+        [
+          "Finn",
+          "Oslo",
+          23,
+          90
+        ]
+      ]
+    }
+  },
+  "target": {
+    "type": "dataframe",
+    "columns": [
+      "name",
+      "city",
+      "age",
+      "score"
+    ],
+    "data": [
+      [
+        "Ben",
+        "Rome",
+        28,
+        72
+      ],
+      [
+        "Dev",
+        "Oslo",
+        31,
+        64
+      ],
+      [
+        "Eva",
+        "Rome",
+        52,
+        81
+      ],
+      [
+        "Finn",
+        "Oslo",
+        23,
+        90
+      ]
+    ],
+    "index": [
+      1,
+      3,
+      4,
+      5
+    ]
+  },
+  "starter_code": "result = ",
+  "hint_1": "Instead of several `==` checks, test whether each value belongs to a list.",
+  "hint_2": "result = df[df[___].____([___, ___])]",
+  "example": {
+    "inputs": {
+      "books": {
+        "type": "dataframe",
+        "columns": [
+          "title",
+          "author",
+          "year",
+          "pages"
+        ],
+        "data": [
+          [
+            "Dune",
+            "Herbert",
+            1965,
+            412
+          ],
+          [
+            "Emma",
+            "Austen",
+            1815,
+            474
+          ],
+          [
+            "Ulysses",
+            "Joyce",
+            1922,
+            730
+          ],
+          [
+            "Beloved",
+            "Morrison",
+            1987,
+            324
+          ],
+          [
+            "Hamlet",
+            "Shakespeare",
+            1603,
+            104
+          ]
+        ]
+      }
+    },
+    "code": "result = books[books['author'].isin(['Austen', 'Joyce'])]",
+    "note": ""
+  },
+  "reference_solution": "result = df[df['city'].isin(['Rome', 'Oslo'])]",
+  "why": "`isin(list)` returns True where the value is one of the listed values, so it works like a filter with many `==` joined by `|`.",
+  "docs_url": "https://pandas.pydata.org/docs/reference/api/pandas.Series.isin.html",
+  "checker_type": "pandas_equal",
+  "checker_options": {},
+  "visual_type": "fade_out"
+}

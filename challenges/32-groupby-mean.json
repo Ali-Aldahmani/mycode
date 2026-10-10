@@ -1,0 +1,107 @@
+{
+  "slug": "groupby-mean",
+  "order": 32,
+  "level": 6,
+  "title": "Average per group",
+  "method": "groupby + mean",
+  "category": "Summarize",
+  "language": "python",
+  "library": "pandas",
+  "source": "official",
+  "task": "Return the average `temp` of each city.",
+  "inputs": {
+    "df": {
+      "type": "dataframe",
+      "columns": [
+        "city",
+        "day",
+        "temp"
+      ],
+      "data": [
+        [
+          "Oslo",
+          "Mon",
+          3
+        ],
+        [
+          "Rome",
+          "Mon",
+          17
+        ],
+        [
+          "Oslo",
+          "Tue",
+          5
+        ],
+        [
+          "Rome",
+          "Tue",
+          19
+        ],
+        [
+          "Oslo",
+          "Wed",
+          1
+        ],
+        [
+          "Rome",
+          "Wed",
+          21
+        ]
+      ]
+    }
+  },
+  "target": {
+    "type": "series",
+    "name": "temp",
+    "data": [
+      3.0,
+      19.0
+    ],
+    "index": [
+      "Oslo",
+      "Rome"
+    ],
+    "index_name": "city"
+  },
+  "starter_code": "result = ",
+  "hint_1": "Group the rows by city, then average the temperatures inside each group.",
+  "hint_2": "result = df.groupby(___)[___].____()",
+  "example": {
+    "inputs": {
+      "grades": {
+        "type": "dataframe",
+        "columns": [
+          "class",
+          "grade"
+        ],
+        "data": [
+          [
+            "A",
+            14
+          ],
+          [
+            "B",
+            11
+          ],
+          [
+            "A",
+            16
+          ],
+          [
+            "B",
+            9
+          ]
+        ]
+      }
+    },
+    "code": "result = grades.groupby('class')['grade'].mean()",
+    "note": ""
+  },
+  "reference_solution": "result = df.groupby('city')['temp'].mean()",
+  "why": "Same split-apply-combine as with sum; only the function that folds each group changes.",
+  "docs_url": "https://pandas.pydata.org/docs/reference/api/pandas.api.typing.SeriesGroupBy.mean.html",
+  "checker_type": "pandas_equal",
+  "checker_options": {},
+  "visual_type": "collapse"
+}

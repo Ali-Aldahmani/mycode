@@ -1,0 +1,140 @@
+{
+  "slug": "drop",
+  "order": 16,
+  "level": 3,
+  "title": "Drop columns",
+  "method": "drop",
+  "category": "Change",
+  "language": "python",
+  "library": "pandas",
+  "source": "official",
+  "task": "Remove the `internal_id` and `notes` columns.",
+  "inputs": {
+    "df": {
+      "type": "dataframe",
+      "columns": [
+        "internal_id",
+        "name",
+        "price",
+        "notes"
+      ],
+      "data": [
+        [
+          901,
+          "Desk",
+          120,
+          "x"
+        ],
+        [
+          902,
+          "Lamp",
+          25,
+          "check"
+        ],
+        [
+          903,
+          "Pen",
+          2,
+          ""
+        ],
+        [
+          904,
+          "Chair",
+          85,
+          "old"
+        ],
+        [
+          905,
+          "Rug",
+          60,
+          ""
+        ]
+      ]
+    }
+  },
+  "target": {
+    "type": "dataframe",
+    "columns": [
+      "name",
+      "price"
+    ],
+    "data": [
+      [
+        "Desk",
+        120
+      ],
+      [
+        "Lamp",
+        25
+      ],
+      [
+        "Pen",
+        2
+      ],
+      [
+        "Chair",
+        85
+      ],
+      [
+        "Rug",
+        60
+      ]
+    ]
+  },
+  "starter_code": "result = ",
+  "hint_1": "One method removes rows or columns; tell it which columns.",
+  "hint_2": "result = df.____(columns=[___, ___])",
+  "example": {
+    "inputs": {
+      "books": {
+        "type": "dataframe",
+        "columns": [
+          "title",
+          "author",
+          "year",
+          "pages"
+        ],
+        "data": [
+          [
+            "Dune",
+            "Herbert",
+            1965,
+            412
+          ],
+          [
+            "Emma",
+            "Austen",
+            1815,
+            474
+          ],
+          [
+            "Ulysses",
+            "Joyce",
+            1922,
+            730
+          ],
+          [
+            "Beloved",
+            "Morrison",
+            1987,
+            324
+          ],
+          [
+            "Hamlet",
+            "Shakespeare",
+            1603,
+            104
+          ]
+        ]
+      }
+    },
+    "code": "result = books.drop(columns=['pages'])",
+    "note": ""
+  },
+  "reference_solution": "result = df.drop(columns=['internal_id', 'notes'])",
+  "why": "`drop(columns=[...])` returns a copy without those columns. Use `index=[...]` to drop rows instead.",
+  "docs_url": "https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.drop.html",
+  "checker_type": "pandas_equal",
+  "checker_options": {},
+  "visual_type": "fade_out"
+}

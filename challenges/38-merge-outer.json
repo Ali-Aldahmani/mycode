@@ -1,0 +1,159 @@
+{
+  "slug": "merge-outer",
+  "order": 38,
+  "level": 7,
+  "title": "Keep everything",
+  "method": "merge outer",
+  "category": "Combine",
+  "language": "python",
+  "library": "pandas",
+  "source": "official",
+  "task": "Combine `left` with `right` on `dept_id`, keeping rows from both sides even without a match.",
+  "inputs": {
+    "left": {
+      "type": "dataframe",
+      "columns": [
+        "emp",
+        "dept_id"
+      ],
+      "data": [
+        [
+          "Ana",
+          1
+        ],
+        [
+          "Ben",
+          2
+        ],
+        [
+          "Cleo",
+          1
+        ],
+        [
+          "Dev",
+          3
+        ],
+        [
+          "Eva",
+          2
+        ]
+      ]
+    },
+    "right": {
+      "type": "dataframe",
+      "columns": [
+        "dept_id",
+        "dept"
+      ],
+      "data": [
+        [
+          1,
+          "Sales"
+        ],
+        [
+          2,
+          "IT"
+        ],
+        [
+          4,
+          "Legal"
+        ]
+      ]
+    }
+  },
+  "target": {
+    "type": "dataframe",
+    "columns": [
+      "emp",
+      "dept_id",
+      "dept"
+    ],
+    "data": [
+      [
+        "Ana",
+        1,
+        "Sales"
+      ],
+      [
+        "Cleo",
+        1,
+        "Sales"
+      ],
+      [
+        "Ben",
+        2,
+        "IT"
+      ],
+      [
+        "Eva",
+        2,
+        "IT"
+      ],
+      [
+        "Dev",
+        3,
+        null
+      ],
+      [
+        null,
+        4,
+        "Legal"
+      ]
+    ]
+  },
+  "starter_code": "result = ",
+  "hint_1": "Ask the merge to keep unmatched rows from both tables.",
+  "hint_2": "result = left.merge(right, on=___, how=_____)",
+  "example": {
+    "inputs": {
+      "orders": {
+        "type": "dataframe",
+        "columns": [
+          "order",
+          "cust"
+        ],
+        "data": [
+          [
+            1,
+            "c1"
+          ],
+          [
+            2,
+            "c2"
+          ],
+          [
+            3,
+            "c9"
+          ]
+        ]
+      },
+      "customers": {
+        "type": "dataframe",
+        "columns": [
+          "cust",
+          "city"
+        ],
+        "data": [
+          [
+            "c1",
+            "Rome"
+          ],
+          [
+            "c3",
+            "Oslo"
+          ]
+        ]
+      }
+    },
+    "code": "result = orders.merge(customers, on='cust', how='outer')",
+    "note": ""
+  },
+  "reference_solution": "result = left.merge(right, on='dept_id', how='outer')",
+  "why": "An outer merge is the union: matched rows are combined, and unmatched rows from either side are kept with NaN for the missing side.",
+  "docs_url": "https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.merge.html",
+  "checker_type": "pandas_equal",
+  "checker_options": {
+    "check_index": false
+  },
+  "visual_type": "connect"
+}

@@ -1,0 +1,122 @@
+{
+  "slug": "pivot-table",
+  "order": 41,
+  "level": 8,
+  "title": "Pivot with totals",
+  "method": "pivot_table",
+  "category": "Reshape",
+  "language": "python",
+  "library": "pandas",
+  "source": "official",
+  "task": "Make a table with one row per `region`, one column per `quarter`, holding the **total** sales.",
+  "inputs": {
+    "df": {
+      "type": "dataframe",
+      "columns": [
+        "region",
+        "quarter",
+        "sales"
+      ],
+      "data": [
+        [
+          "north",
+          "Q1",
+          10
+        ],
+        [
+          "south",
+          "Q1",
+          7
+        ],
+        [
+          "north",
+          "Q1",
+          5
+        ],
+        [
+          "north",
+          "Q2",
+          8
+        ],
+        [
+          "south",
+          "Q2",
+          9
+        ],
+        [
+          "south",
+          "Q2",
+          3
+        ]
+      ]
+    }
+  },
+  "target": {
+    "type": "dataframe",
+    "columns": [
+      "Q1",
+      "Q2"
+    ],
+    "data": [
+      [
+        15,
+        8
+      ],
+      [
+        7,
+        12
+      ]
+    ],
+    "index": [
+      "north",
+      "south"
+    ],
+    "index_name": "region",
+    "columns_name": "quarter"
+  },
+  "starter_code": "result = ",
+  "hint_1": "Like pivot, but several rows land in the same cell, so you also choose how to combine them.",
+  "hint_2": "result = df.pivot_table(index=___, columns=___, values=___, aggfunc=___)",
+  "example": {
+    "inputs": {
+      "visits": {
+        "type": "dataframe",
+        "columns": [
+          "page",
+          "device",
+          "views"
+        ],
+        "data": [
+          [
+            "home",
+            "web",
+            3
+          ],
+          [
+            "home",
+            "web",
+            2
+          ],
+          [
+            "home",
+            "app",
+            4
+          ],
+          [
+            "cart",
+            "app",
+            1
+          ]
+        ]
+      }
+    },
+    "code": "result = visits.pivot_table(index='page', columns='device', values='views', aggfunc='sum')",
+    "note": ""
+  },
+  "reference_solution": "result = df.pivot_table(index='region', columns='quarter', values='sales', aggfunc='sum')",
+  "why": "`pivot_table` groups rows that share the same (index, column) pair and aggregates them, here with `sum`.",
+  "docs_url": "https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.pivot_table.html",
+  "checker_type": "pandas_equal",
+  "checker_options": {},
+  "visual_type": "move_cells"
+}

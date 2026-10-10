@@ -1,0 +1,92 @@
+{
+  "slug": "dt-methods",
+  "order": 30,
+  "level": 5,
+  "title": "Dates",
+  "method": ".dt",
+  "category": "Transform",
+  "language": "python",
+  "library": "pandas",
+  "source": "official",
+  "task": "Return the day of the week (e.g. `'Monday'`) for each date.",
+  "inputs": {
+    "df": {
+      "type": "dataframe",
+      "columns": [
+        "order",
+        "date"
+      ],
+      "data": [
+        [
+          1,
+          "2024-03-04"
+        ],
+        [
+          2,
+          "2024-03-06"
+        ],
+        [
+          3,
+          "2024-03-09"
+        ],
+        [
+          4,
+          "2024-03-10"
+        ],
+        [
+          5,
+          "2024-03-12"
+        ]
+      ],
+      "dtypes": {
+        "date": "datetime64[ns]"
+      }
+    }
+  },
+  "target": {
+    "type": "series",
+    "name": "date",
+    "data": [
+      "Monday",
+      "Wednesday",
+      "Saturday",
+      "Sunday",
+      "Tuesday"
+    ]
+  },
+  "starter_code": "result = ",
+  "hint_1": "Date columns have an accessor that exposes calendar parts.",
+  "hint_2": "result = df[___].__.________()",
+  "example": {
+    "inputs": {
+      "events": {
+        "type": "dataframe",
+        "columns": [
+          "event",
+          "when"
+        ],
+        "data": [
+          [
+            "launch",
+            "2024-01-15"
+          ],
+          [
+            "party",
+            "2024-07-01"
+          ]
+        ],
+        "dtypes": {
+          "when": "datetime64[ns]"
+        }
+      }
+    },
+    "code": "result = events['when'].dt.day_name()",
+    "note": ""
+  },
+  "reference_solution": "result = df['date'].dt.day_name()",
+  "why": "`.dt` works on datetime columns: `.dt.year`, `.dt.month`, `.dt.day_name()` and more, applied to every value.",
+  "docs_url": "https://pandas.pydata.org/docs/reference/api/pandas.Series.dt.day_name.html",
+  "checker_type": "pandas_equal",
+  "checker_options": {},
+  "visual_type": "scan"
+}

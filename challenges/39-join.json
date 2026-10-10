@@ -1,0 +1,156 @@
+{
+  "slug": "join",
+  "order": 39,
+  "level": 7,
+  "title": "Join on the index",
+  "method": "join",
+  "category": "Combine",
+  "language": "python",
+  "library": "pandas",
+  "source": "official",
+  "task": "`right` is indexed by `dept_id`. Attach each employee's department name using `join`.",
+  "inputs": {
+    "left": {
+      "type": "dataframe",
+      "columns": [
+        "emp",
+        "dept_id"
+      ],
+      "data": [
+        [
+          "Ana",
+          1
+        ],
+        [
+          "Ben",
+          2
+        ],
+        [
+          "Cleo",
+          1
+        ],
+        [
+          "Dev",
+          3
+        ],
+        [
+          "Eva",
+          2
+        ]
+      ]
+    },
+    "right": {
+      "type": "dataframe",
+      "columns": [
+        "dept"
+      ],
+      "data": [
+        [
+          "Sales"
+        ],
+        [
+          "IT"
+        ],
+        [
+          "Legal"
+        ]
+      ],
+      "index": [
+        1,
+        2,
+        4
+      ],
+      "index_name": "dept_id"
+    }
+  },
+  "target": {
+    "type": "dataframe",
+    "columns": [
+      "emp",
+      "dept_id",
+      "dept"
+    ],
+    "data": [
+      [
+        "Ana",
+        1,
+        "Sales"
+      ],
+      [
+        "Ben",
+        2,
+        "IT"
+      ],
+      [
+        "Cleo",
+        1,
+        "Sales"
+      ],
+      [
+        "Dev",
+        3,
+        null
+      ],
+      [
+        "Eva",
+        2,
+        "IT"
+      ]
+    ]
+  },
+  "starter_code": "result = ",
+  "hint_1": "`join` matches a column of the left table against the index of the right table.",
+  "hint_2": "result = left.____(right, on=___)",
+  "example": {
+    "inputs": {
+      "orders": {
+        "type": "dataframe",
+        "columns": [
+          "order",
+          "cust"
+        ],
+        "data": [
+          [
+            1,
+            "c1"
+          ],
+          [
+            2,
+            "c2"
+          ],
+          [
+            3,
+            "c9"
+          ]
+        ]
+      },
+      "customers": {
+        "type": "dataframe",
+        "columns": [
+          "city"
+        ],
+        "data": [
+          [
+            "Rome"
+          ],
+          [
+            "Oslo"
+          ]
+        ],
+        "index": [
+          "c1",
+          "c2"
+        ],
+        "index_name": "cust"
+      }
+    },
+    "code": "result = orders.join(customers, on='cust')",
+    "note": ""
+  },
+  "reference_solution": "result = left.join(right, on='dept_id')",
+  "why": "`join` is a left merge against the other table's index. It keeps every left row and its index.",
+  "docs_url": "https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.join.html",
+  "checker_type": "pandas_equal",
+  "checker_options": {},
+  "visual_type": "connect"
+}

@@ -1,0 +1,123 @@
+{
+  "slug": "concat",
+  "order": 35,
+  "level": 7,
+  "title": "Stack tables",
+  "method": "concat",
+  "category": "Combine",
+  "language": "python",
+  "library": "pandas",
+  "source": "official",
+  "task": "Stack `left` (January) on top of `right` (February) into one table with a fresh index 0..n-1.",
+  "inputs": {
+    "left": {
+      "type": "dataframe",
+      "columns": [
+        "day",
+        "sales"
+      ],
+      "data": [
+        [
+          "Jan 1",
+          120
+        ],
+        [
+          "Jan 2",
+          95
+        ],
+        [
+          "Jan 3",
+          130
+        ]
+      ]
+    },
+    "right": {
+      "type": "dataframe",
+      "columns": [
+        "day",
+        "sales"
+      ],
+      "data": [
+        [
+          "Feb 1",
+          110
+        ],
+        [
+          "Feb 2",
+          150
+        ]
+      ]
+    }
+  },
+  "target": {
+    "type": "dataframe",
+    "columns": [
+      "day",
+      "sales"
+    ],
+    "data": [
+      [
+        "Jan 1",
+        120
+      ],
+      [
+        "Jan 2",
+        95
+      ],
+      [
+        "Jan 3",
+        130
+      ],
+      [
+        "Feb 1",
+        110
+      ],
+      [
+        "Feb 2",
+        150
+      ]
+    ]
+  },
+  "starter_code": "result = ",
+  "hint_1": "A top-level pandas function glues a list of tables together, one after another.",
+  "hint_2": "result = pd.______([___, ___], ignore_index=____)",
+  "example": {
+    "inputs": {
+      "a": {
+        "type": "dataframe",
+        "columns": [
+          "name"
+        ],
+        "data": [
+          [
+            "Ana"
+          ],
+          [
+            "Ben"
+          ]
+        ]
+      },
+      "b": {
+        "type": "dataframe",
+        "columns": [
+          "name"
+        ],
+        "data": [
+          [
+            "Cleo"
+          ]
+        ]
+      }
+    },
+    "code": "result = pd.concat([a, b], ignore_index=True)",
+    "note": ""
+  },
+  "reference_solution": "result = pd.concat([left, right], ignore_index=True)",
+  "why": "`concat` puts the rows of each table one after another. `ignore_index=True` renumbers the rows instead of keeping duplicate labels.",
+  "docs_url": "https://pandas.pydata.org/docs/reference/api/pandas.concat.html",
+  "checker_type": "pandas_equal",
+  "checker_options": {
+    "check_row_order": true
+  },
+  "visual_type": "move_cells"
+}

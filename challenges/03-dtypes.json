@@ -1,0 +1,127 @@
+{
+  "slug": "dtypes",
+  "order": 3,
+  "level": 1,
+  "title": "Column types",
+  "method": "dtypes",
+  "category": "Look",
+  "language": "python",
+  "library": "pandas",
+  "source": "official",
+  "task": "Return the data type of every column of `df`.",
+  "inputs": {
+    "df": {
+      "type": "dataframe",
+      "columns": [
+        "name",
+        "age",
+        "height",
+        "member"
+      ],
+      "data": [
+        [
+          "Ana",
+          34,
+          1.68,
+          true
+        ],
+        [
+          "Ben",
+          28,
+          1.81,
+          false
+        ],
+        [
+          "Cleo",
+          45,
+          1.74,
+          true
+        ],
+        [
+          "Dev",
+          31,
+          1.77,
+          false
+        ],
+        [
+          "Eva",
+          52,
+          1.62,
+          true
+        ]
+      ]
+    }
+  },
+  "target": {
+    "type": "series",
+    "name": null,
+    "data": [
+      "str",
+      "int64",
+      "float64",
+      "bool"
+    ],
+    "index": [
+      "name",
+      "age",
+      "height",
+      "member"
+    ]
+  },
+  "starter_code": "result = ",
+  "hint_1": "Ask the DataFrame for the types of its columns; it answers with one row per column.",
+  "hint_2": "result = df.______",
+  "example": {
+    "inputs": {
+      "books": {
+        "type": "dataframe",
+        "columns": [
+          "title",
+          "author",
+          "year",
+          "pages"
+        ],
+        "data": [
+          [
+            "Dune",
+            "Herbert",
+            1965,
+            412
+          ],
+          [
+            "Emma",
+            "Austen",
+            1815,
+            474
+          ],
+          [
+            "Ulysses",
+            "Joyce",
+            1922,
+            730
+          ],
+          [
+            "Beloved",
+            "Morrison",
+            1987,
+            324
+          ],
+          [
+            "Hamlet",
+            "Shakespeare",
+            1603,
+            104
+          ]
+        ]
+      }
+    },
+    "code": "result = books.dtypes",
+    "note": ""
+  },
+  "reference_solution": "result = df.dtypes",
+  "why": "`dtypes` returns a Series: the index holds the column names, the values hold their types (int64, float64, bool, str...).",
+  "docs_url": "https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.dtypes.html",
+  "checker_type": "pandas_equal",
+  "checker_options": {},
+  "visual_type": "appear"
+}

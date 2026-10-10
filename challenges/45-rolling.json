@@ -1,0 +1,104 @@
+{
+  "slug": "rolling",
+  "order": 45,
+  "level": 9,
+  "title": "Moving average",
+  "method": "rolling",
+  "category": "Time",
+  "language": "python",
+  "library": "pandas",
+  "source": "official",
+  "task": "Return the 3-day moving average of `temp`.",
+  "inputs": {
+    "df": {
+      "type": "dataframe",
+      "columns": [
+        "day",
+        "temp"
+      ],
+      "data": [
+        [
+          "Mon",
+          10
+        ],
+        [
+          "Tue",
+          12
+        ],
+        [
+          "Wed",
+          17
+        ],
+        [
+          "Thu",
+          11
+        ],
+        [
+          "Fri",
+          13
+        ],
+        [
+          "Sat",
+          18
+        ],
+        [
+          "Sun",
+          15
+        ]
+      ]
+    }
+  },
+  "target": {
+    "type": "series",
+    "name": "temp",
+    "data": [
+      null,
+      null,
+      13.0,
+      13.333333333333334,
+      13.666666666666666,
+      14.0,
+      15.333333333333334
+    ]
+  },
+  "starter_code": "result = ",
+  "hint_1": "Create a window that slides over the last few rows, then average inside the window.",
+  "hint_2": "result = df[___].rolling(_).____()",
+  "example": {
+    "inputs": {
+      "prices": {
+        "type": "dataframe",
+        "columns": [
+          "day",
+          "price"
+        ],
+        "data": [
+          [
+            1,
+            100.0
+          ],
+          [
+            2,
+            104.0
+          ],
+          [
+            3,
+            98.0
+          ],
+          [
+            4,
+            110.0
+          ]
+        ]
+      }
+    },
+    "code": "result = prices['price'].rolling(2).mean()",
+    "note": ""
+  },
+  "reference_solution": "result = df['temp'].rolling(3).mean()",
+  "why": "`rolling(3)` looks at the current row and the 2 before it. The first two rows don't have 3 values yet, so they are NaN.",
+  "docs_url": "https://pandas.pydata.org/docs/reference/api/pandas.Series.rolling.html",
+  "checker_type": "pandas_equal",
+  "checker_options": {},
+  "visual_type": "scan"
+}

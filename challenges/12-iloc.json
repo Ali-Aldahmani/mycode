@@ -1,0 +1,146 @@
+{
+  "slug": "iloc",
+  "order": 12,
+  "level": 2,
+  "title": "Rows and columns by position",
+  "method": "iloc",
+  "category": "Pick",
+  "language": "python",
+  "library": "pandas",
+  "source": "official",
+  "task": "Return the first 3 rows and the first 2 columns, by position.",
+  "inputs": {
+    "df": {
+      "type": "dataframe",
+      "columns": [
+        "name",
+        "city",
+        "age",
+        "score"
+      ],
+      "data": [
+        [
+          "Ana",
+          "Paris",
+          34,
+          88
+        ],
+        [
+          "Ben",
+          "Rome",
+          28,
+          72
+        ],
+        [
+          "Cleo",
+          "Paris",
+          45,
+          95
+        ],
+        [
+          "Dev",
+          "Oslo",
+          31,
+          64
+        ],
+        [
+          "Eva",
+          "Rome",
+          52,
+          81
+        ],
+        [
+          "Finn",
+          "Oslo",
+          23,
+          90
+        ]
+      ]
+    }
+  },
+  "target": {
+    "type": "dataframe",
+    "columns": [
+      "name",
+      "city"
+    ],
+    "data": [
+      [
+        "Ana",
+        "Paris"
+      ],
+      [
+        "Ben",
+        "Rome"
+      ],
+      [
+        "Cleo",
+        "Paris"
+      ]
+    ]
+  },
+  "starter_code": "result = ",
+  "hint_1": "There is an indexer that works with positions (0, 1, 2...) instead of labels.",
+  "hint_2": "result = df.____[:_, :_]",
+  "example": {
+    "inputs": {
+      "products": {
+        "type": "dataframe",
+        "columns": [
+          "name",
+          "category",
+          "price",
+          "stock"
+        ],
+        "data": [
+          [
+            "Desk",
+            "office",
+            120,
+            4
+          ],
+          [
+            "Lamp",
+            "home",
+            25,
+            0
+          ],
+          [
+            "Pen",
+            "office",
+            2,
+            300
+          ],
+          [
+            "Chair",
+            "office",
+            85,
+            12
+          ],
+          [
+            "Rug",
+            "home",
+            60,
+            3
+          ],
+          [
+            "Mug",
+            "home",
+            8,
+            0
+          ]
+        ]
+      }
+    },
+    "code": "result = products.iloc[2:5, 1:3]",
+    "note": ""
+  },
+  "reference_solution": "result = df.iloc[:3, :2]",
+  "why": "`.iloc` counts positions like Python lists: the end of a slice is excluded, so `:3` means positions 0, 1, 2.",
+  "docs_url": "https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.iloc.html",
+  "checker_type": "pandas_equal",
+  "checker_options": {
+    "check_column_order": true
+  },
+  "visual_type": "fade_out"
+}

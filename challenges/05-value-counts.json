@@ -1,0 +1,106 @@
+{
+  "slug": "value-counts",
+  "order": 5,
+  "level": 1,
+  "title": "Count each value",
+  "method": "value_counts",
+  "category": "Look",
+  "language": "python",
+  "library": "pandas",
+  "source": "official",
+  "task": "How many fruits are there of each color? Return the count for each color.",
+  "inputs": {
+    "df": {
+      "type": "dataframe",
+      "columns": [
+        "fruit",
+        "color"
+      ],
+      "data": [
+        [
+          "apple",
+          "red"
+        ],
+        [
+          "banana",
+          "yellow"
+        ],
+        [
+          "cherry",
+          "red"
+        ],
+        [
+          "lemon",
+          "yellow"
+        ],
+        [
+          "kiwi",
+          "green"
+        ],
+        [
+          "plum",
+          "red"
+        ]
+      ]
+    }
+  },
+  "target": {
+    "type": "series",
+    "name": "count",
+    "data": [
+      3,
+      2,
+      1
+    ],
+    "index": [
+      "red",
+      "yellow",
+      "green"
+    ],
+    "index_name": "color"
+  },
+  "starter_code": "result = ",
+  "hint_1": "Take the column you care about, then ask it how often each distinct value appears.",
+  "hint_2": "result = df[___].____________()",
+  "example": {
+    "inputs": {
+      "cities": {
+        "type": "dataframe",
+        "columns": [
+          "city",
+          "country"
+        ],
+        "data": [
+          [
+            "Lyon",
+            "France"
+          ],
+          [
+            "Nice",
+            "France"
+          ],
+          [
+            "Porto",
+            "Portugal"
+          ],
+          [
+            "Paris",
+            "France"
+          ],
+          [
+            "Lisbon",
+            "Portugal"
+          ]
+        ]
+      }
+    },
+    "code": "result = cities['country'].value_counts()",
+    "note": ""
+  },
+  "reference_solution": "result = df['color'].value_counts()",
+  "why": "`value_counts()` groups equal values together and counts each group. The values become the index, sorted by count.",
+  "docs_url": "https://pandas.pydata.org/docs/reference/api/pandas.Series.value_counts.html",
+  "checker_type": "pandas_equal",
+  "checker_options": {},
+  "visual_type": "collapse"
+}

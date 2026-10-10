@@ -1,0 +1,113 @@
+{
+  "slug": "shape",
+  "order": 2,
+  "level": 1,
+  "title": "Rows and columns",
+  "method": "shape",
+  "category": "Look",
+  "language": "python",
+  "library": "pandas",
+  "source": "official",
+  "task": "How many rows and columns does `df` have? Return the `(rows, columns)` tuple.",
+  "inputs": {
+    "df": {
+      "type": "dataframe",
+      "columns": [
+        "title",
+        "author",
+        "year",
+        "pages"
+      ],
+      "data": [
+        [
+          "Dune",
+          "Herbert",
+          1965,
+          412
+        ],
+        [
+          "Emma",
+          "Austen",
+          1815,
+          474
+        ],
+        [
+          "Ulysses",
+          "Joyce",
+          1922,
+          730
+        ],
+        [
+          "Beloved",
+          "Morrison",
+          1987,
+          324
+        ],
+        [
+          "Hamlet",
+          "Shakespeare",
+          1603,
+          104
+        ]
+      ]
+    }
+  },
+  "target": {
+    "type": "scalar",
+    "value": [
+      5,
+      4
+    ],
+    "tuple": true
+  },
+  "starter_code": "result = ",
+  "hint_1": "Every DataFrame has an attribute (not a method) that describes its size.",
+  "hint_2": "result = df.___",
+  "example": {
+    "inputs": {
+      "cities": {
+        "type": "dataframe",
+        "columns": [
+          "city",
+          "country",
+          "population"
+        ],
+        "data": [
+          [
+            "Paris",
+            "France",
+            2.1
+          ],
+          [
+            "Berlin",
+            "Germany",
+            3.6
+          ],
+          [
+            "Madrid",
+            "Spain",
+            3.3
+          ],
+          [
+            "Rome",
+            "Italy",
+            2.8
+          ],
+          [
+            "Lisbon",
+            "Portugal",
+            0.5
+          ]
+        ]
+      }
+    },
+    "code": "result = cities.shape",
+    "note": ""
+  },
+  "reference_solution": "result = df.shape",
+  "why": "`shape` is an attribute, so no parentheses. It is always `(number_of_rows, number_of_columns)`.",
+  "docs_url": "https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.shape.html",
+  "checker_type": "pandas_equal",
+  "checker_options": {},
+  "visual_type": "appear"
+}

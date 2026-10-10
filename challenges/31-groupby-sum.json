@@ -1,0 +1,109 @@
+{
+  "slug": "groupby-sum",
+  "order": 31,
+  "level": 6,
+  "title": "Total per group",
+  "method": "groupby + sum",
+  "category": "Summarize",
+  "language": "python",
+  "library": "pandas",
+  "source": "official",
+  "task": "Return the total `points` of each team.",
+  "inputs": {
+    "df": {
+      "type": "dataframe",
+      "columns": [
+        "team",
+        "player",
+        "points"
+      ],
+      "data": [
+        [
+          "red",
+          "Ana",
+          12
+        ],
+        [
+          "blue",
+          "Ben",
+          7
+        ],
+        [
+          "red",
+          "Cleo",
+          9
+        ],
+        [
+          "green",
+          "Dev",
+          15
+        ],
+        [
+          "blue",
+          "Eva",
+          11
+        ],
+        [
+          "red",
+          "Finn",
+          4
+        ]
+      ]
+    }
+  },
+  "target": {
+    "type": "series",
+    "name": "points",
+    "data": [
+      18,
+      15,
+      25
+    ],
+    "index": [
+      "blue",
+      "green",
+      "red"
+    ],
+    "index_name": "team"
+  },
+  "starter_code": "result = ",
+  "hint_1": "Split the rows by team, then add up the points inside each group.",
+  "hint_2": "result = df.groupby(___)[___].___()",
+  "example": {
+    "inputs": {
+      "sales": {
+        "type": "dataframe",
+        "columns": [
+          "shop",
+          "amount"
+        ],
+        "data": [
+          [
+            "north",
+            20
+          ],
+          [
+            "south",
+            35
+          ],
+          [
+            "north",
+            15
+          ],
+          [
+            "south",
+            5
+          ]
+        ]
+      }
+    },
+    "code": "result = sales.groupby('shop')['amount'].sum()",
+    "note": ""
+  },
+  "reference_solution": "result = df.groupby('team')['points'].sum()",
+  "why": "`groupby` splits rows into groups by key, the aggregation folds each group into one value, and the keys become the index.",
+  "docs_url": "https://pandas.pydata.org/docs/reference/api/pandas.api.typing.SeriesGroupBy.sum.html",
+  "checker_type": "pandas_equal",
+  "checker_options": {},
+  "visual_type": "collapse"
+}

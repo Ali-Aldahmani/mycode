@@ -1,0 +1,134 @@
+{
+  "slug": "fillna",
+  "order": 23,
+  "level": 4,
+  "title": "Fill missing values",
+  "method": "fillna",
+  "category": "Clean",
+  "language": "python",
+  "library": "pandas",
+  "source": "official",
+  "task": "Fill missing `age` values with 0 and missing `city` values with `'Unknown'`.",
+  "inputs": {
+    "df": {
+      "type": "dataframe",
+      "columns": [
+        "name",
+        "age",
+        "city"
+      ],
+      "data": [
+        [
+          "Ana",
+          34,
+          "Paris"
+        ],
+        [
+          "Ben",
+          null,
+          "Rome"
+        ],
+        [
+          "Cleo",
+          45,
+          null
+        ],
+        [
+          "Dev",
+          31,
+          "Oslo"
+        ],
+        [
+          "Eva",
+          null,
+          null
+        ],
+        [
+          "Finn",
+          23,
+          "Oslo"
+        ]
+      ]
+    }
+  },
+  "target": {
+    "type": "dataframe",
+    "columns": [
+      "name",
+      "age",
+      "city"
+    ],
+    "data": [
+      [
+        "Ana",
+        34.0,
+        "Paris"
+      ],
+      [
+        "Ben",
+        0.0,
+        "Rome"
+      ],
+      [
+        "Cleo",
+        45.0,
+        "Unknown"
+      ],
+      [
+        "Dev",
+        31.0,
+        "Oslo"
+      ],
+      [
+        "Eva",
+        0.0,
+        "Unknown"
+      ],
+      [
+        "Finn",
+        23.0,
+        "Oslo"
+      ]
+    ]
+  },
+  "starter_code": "result = ",
+  "hint_1": "One method replaces NaN; it can take a different fill value per column.",
+  "hint_2": "result = df.______({___: _, ___: ___})",
+  "example": {
+    "inputs": {
+      "temps": {
+        "type": "dataframe",
+        "columns": [
+          "day",
+          "temp",
+          "note"
+        ],
+        "data": [
+          [
+            "Mon",
+            12.0,
+            null
+          ],
+          [
+            "Tue",
+            null,
+            "rain"
+          ],
+          [
+            "Wed",
+            15.0,
+            null
+          ]
+        ]
+      }
+    },
+    "code": "result = temps.fillna({'temp': 10.0, 'note': '-'})",
+    "note": ""
+  },
+  "reference_solution": "result = df.fillna({'age': 0, 'city': 'Unknown'})",
+  "why": "With a dict, `fillna` fills each column with its own value. Cells that were not missing are untouched.",
+  "docs_url": "https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.fillna.html",
+  "checker_type": "pandas_equal",
+  "checker_options": {},
+  "visual_type": "appear"
+}

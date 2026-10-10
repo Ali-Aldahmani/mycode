@@ -1,0 +1,120 @@
+{
+  "slug": "cumsum-shift",
+  "order": 44,
+  "level": 9,
+  "title": "Previous value and running total",
+  "method": "cumsum / shift",
+  "category": "Time",
+  "language": "python",
+  "library": "pandas",
+  "source": "official",
+  "task": "Add `prev` = the previous day's sales (`shift`) and `total` = the running total of sales (`cumsum`).",
+  "inputs": {
+    "df": {
+      "type": "dataframe",
+      "columns": [
+        "day",
+        "sales"
+      ],
+      "data": [
+        [
+          "Mon",
+          10
+        ],
+        [
+          "Tue",
+          14
+        ],
+        [
+          "Wed",
+          9
+        ],
+        [
+          "Thu",
+          20
+        ],
+        [
+          "Fri",
+          16
+        ]
+      ]
+    }
+  },
+  "target": {
+    "type": "dataframe",
+    "columns": [
+      "day",
+      "sales",
+      "prev",
+      "total"
+    ],
+    "data": [
+      [
+        "Mon",
+        10,
+        null,
+        10
+      ],
+      [
+        "Tue",
+        14,
+        10.0,
+        24
+      ],
+      [
+        "Wed",
+        9,
+        14.0,
+        33
+      ],
+      [
+        "Thu",
+        20,
+        9.0,
+        53
+      ],
+      [
+        "Fri",
+        16,
+        20.0,
+        69
+      ]
+    ]
+  },
+  "starter_code": "df['prev'] = \ndf['total'] = \nresult = df",
+  "hint_1": "One method moves values down by one row; another adds each value to the sum of the ones before it.",
+  "hint_2": "df['prev'] = df['sales'].shift(_)\ndf['total'] = df['sales'].______()\nresult = df",
+  "example": {
+    "inputs": {
+      "steps": {
+        "type": "dataframe",
+        "columns": [
+          "hour",
+          "steps"
+        ],
+        "data": [
+          [
+            8,
+            500
+          ],
+          [
+            9,
+            1200
+          ],
+          [
+            10,
+            300
+          ]
+        ]
+      }
+    },
+    "code": "steps['prev'] = steps['steps'].shift(1)\nsteps['total'] = steps['steps'].cumsum()\nresult = steps",
+    "note": ""
+  },
+  "reference_solution": "df['prev'] = df['sales'].shift(1)\ndf['total'] = df['sales'].cumsum()\nresult = df",
+  "why": "`shift(1)` slides every value one row down (the first becomes NaN). `cumsum()` keeps a running total from top to bottom.",
+  "docs_url": "https://pandas.pydata.org/docs/reference/api/pandas.Series.cumsum.html",
+  "checker_type": "pandas_equal",
+  "checker_options": {},
+  "visual_type": "scan"
+}

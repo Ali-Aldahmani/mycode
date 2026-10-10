@@ -1,0 +1,130 @@
+{
+  "slug": "drop-duplicates",
+  "order": 25,
+  "level": 4,
+  "title": "Remove duplicates",
+  "method": "drop_duplicates",
+  "category": "Clean",
+  "language": "python",
+  "library": "pandas",
+  "source": "official",
+  "task": "Remove the rows that are exact copies of an earlier row.",
+  "inputs": {
+    "df": {
+      "type": "dataframe",
+      "columns": [
+        "name",
+        "city",
+        "age"
+      ],
+      "data": [
+        [
+          "Ana",
+          "Paris",
+          34
+        ],
+        [
+          "Ben",
+          "Rome",
+          28
+        ],
+        [
+          "Ana",
+          "Paris",
+          34
+        ],
+        [
+          "Cleo",
+          "Oslo",
+          45
+        ],
+        [
+          "Ben",
+          "Rome",
+          28
+        ],
+        [
+          "Ben",
+          "Oslo",
+          28
+        ]
+      ]
+    }
+  },
+  "target": {
+    "type": "dataframe",
+    "columns": [
+      "name",
+      "city",
+      "age"
+    ],
+    "data": [
+      [
+        "Ana",
+        "Paris",
+        34
+      ],
+      [
+        "Ben",
+        "Rome",
+        28
+      ],
+      [
+        "Cleo",
+        "Oslo",
+        45
+      ],
+      [
+        "Ben",
+        "Oslo",
+        28
+      ]
+    ],
+    "index": [
+      0,
+      1,
+      3,
+      5
+    ]
+  },
+  "starter_code": "result = ",
+  "hint_1": "One method keeps the first occurrence of each row and drops the rest.",
+  "hint_2": "result = df.___________()",
+  "example": {
+    "inputs": {
+      "visits": {
+        "type": "dataframe",
+        "columns": [
+          "user",
+          "page"
+        ],
+        "data": [
+          [
+            "u1",
+            "home"
+          ],
+          [
+            "u2",
+            "cart"
+          ],
+          [
+            "u1",
+            "home"
+          ],
+          [
+            "u2",
+            "home"
+          ]
+        ]
+      }
+    },
+    "code": "result = visits.drop_duplicates()",
+    "note": ""
+  },
+  "reference_solution": "result = df.drop_duplicates()",
+  "why": "`drop_duplicates()` is the same as `df[~df.duplicated()]`: keep rows that are not copies of an earlier row.",
+  "docs_url": "https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.drop_duplicates.html",
+  "checker_type": "pandas_equal",
+  "checker_options": {},
+  "visual_type": "fade_out"
+}

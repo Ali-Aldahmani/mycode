@@ -1,0 +1,141 @@
+{
+  "slug": "transform",
+  "order": 34,
+  "level": 6,
+  "title": "Group value on every row",
+  "method": "transform",
+  "category": "Summarize",
+  "language": "python",
+  "library": "pandas",
+  "source": "official",
+  "task": "Add a column `team_avg` with the average points of each row's team, keeping every row.",
+  "inputs": {
+    "df": {
+      "type": "dataframe",
+      "columns": [
+        "team",
+        "player",
+        "points"
+      ],
+      "data": [
+        [
+          "red",
+          "Ana",
+          12
+        ],
+        [
+          "blue",
+          "Ben",
+          7
+        ],
+        [
+          "red",
+          "Cleo",
+          9
+        ],
+        [
+          "green",
+          "Dev",
+          15
+        ],
+        [
+          "blue",
+          "Eva",
+          11
+        ],
+        [
+          "red",
+          "Finn",
+          4
+        ]
+      ]
+    }
+  },
+  "target": {
+    "type": "dataframe",
+    "columns": [
+      "team",
+      "player",
+      "points",
+      "team_avg"
+    ],
+    "data": [
+      [
+        "red",
+        "Ana",
+        12,
+        8.333333333333334
+      ],
+      [
+        "blue",
+        "Ben",
+        7,
+        9.0
+      ],
+      [
+        "red",
+        "Cleo",
+        9,
+        8.333333333333334
+      ],
+      [
+        "green",
+        "Dev",
+        15,
+        15.0
+      ],
+      [
+        "blue",
+        "Eva",
+        11,
+        9.0
+      ],
+      [
+        "red",
+        "Finn",
+        4,
+        8.333333333333334
+      ]
+    ]
+  },
+  "starter_code": "df['team_avg'] = \nresult = df",
+  "hint_1": "Unlike an aggregation, this must give back one value per original row, so it can be stored as a column.",
+  "hint_2": "df[___] = df.groupby(___)[___].transform(___)\nresult = df",
+  "example": {
+    "inputs": {
+      "sales": {
+        "type": "dataframe",
+        "columns": [
+          "shop",
+          "amount"
+        ],
+        "data": [
+          [
+            "north",
+            20
+          ],
+          [
+            "south",
+            35
+          ],
+          [
+            "north",
+            10
+          ],
+          [
+            "south",
+            5
+          ]
+        ]
+      }
+    },
+    "code": "sales['shop_total'] = sales.groupby('shop')['amount'].transform('sum')\nresult = sales",
+    "note": ""
+  },
+  "reference_solution": "df['team_avg'] = df.groupby('team')['points'].transform('mean')\nresult = df",
+  "why": "`transform` computes the group statistic and broadcasts it back to every row of the group, aligned with the original index.",
+  "docs_url": "https://pandas.pydata.org/docs/reference/api/pandas.api.typing.SeriesGroupBy.transform.html",
+  "checker_type": "pandas_equal",
+  "checker_options": {},
+  "visual_type": "scan"
+}

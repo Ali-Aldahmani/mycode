@@ -1,0 +1,174 @@
+{
+  "slug": "sort-values",
+  "order": 17,
+  "level": 3,
+  "title": "Sort rows",
+  "method": "sort_values",
+  "category": "Change",
+  "language": "python",
+  "library": "pandas",
+  "source": "official",
+  "task": "Sort the people by `score`, highest first.",
+  "inputs": {
+    "df": {
+      "type": "dataframe",
+      "columns": [
+        "name",
+        "city",
+        "age",
+        "score"
+      ],
+      "data": [
+        [
+          "Ana",
+          "Paris",
+          34,
+          88
+        ],
+        [
+          "Ben",
+          "Rome",
+          28,
+          72
+        ],
+        [
+          "Cleo",
+          "Paris",
+          45,
+          95
+        ],
+        [
+          "Dev",
+          "Oslo",
+          31,
+          64
+        ],
+        [
+          "Eva",
+          "Rome",
+          52,
+          81
+        ],
+        [
+          "Finn",
+          "Oslo",
+          23,
+          90
+        ]
+      ]
+    }
+  },
+  "target": {
+    "type": "dataframe",
+    "columns": [
+      "name",
+      "city",
+      "age",
+      "score"
+    ],
+    "data": [
+      [
+        "Cleo",
+        "Paris",
+        45,
+        95
+      ],
+      [
+        "Finn",
+        "Oslo",
+        23,
+        90
+      ],
+      [
+        "Ana",
+        "Paris",
+        34,
+        88
+      ],
+      [
+        "Eva",
+        "Rome",
+        52,
+        81
+      ],
+      [
+        "Ben",
+        "Rome",
+        28,
+        72
+      ],
+      [
+        "Dev",
+        "Oslo",
+        31,
+        64
+      ]
+    ],
+    "index": [
+      2,
+      5,
+      0,
+      4,
+      1,
+      3
+    ]
+  },
+  "starter_code": "result = ",
+  "hint_1": "Use the method that orders rows by the values of a column, and flip the direction.",
+  "hint_2": "result = df.___________(___, ascending=_____)",
+  "example": {
+    "inputs": {
+      "books": {
+        "type": "dataframe",
+        "columns": [
+          "title",
+          "author",
+          "year",
+          "pages"
+        ],
+        "data": [
+          [
+            "Dune",
+            "Herbert",
+            1965,
+            412
+          ],
+          [
+            "Emma",
+            "Austen",
+            1815,
+            474
+          ],
+          [
+            "Ulysses",
+            "Joyce",
+            1922,
+            730
+          ],
+          [
+            "Beloved",
+            "Morrison",
+            1987,
+            324
+          ],
+          [
+            "Hamlet",
+            "Shakespeare",
+            1603,
+            104
+          ]
+        ]
+      }
+    },
+    "code": "result = books.sort_values('year')",
+    "note": ""
+  },
+  "reference_solution": "result = df.sort_values('score', ascending=False)",
+  "why": "Rows move but keep their index labels, so you can still see where each row came from. `ascending=False` sorts from high to low.",
+  "docs_url": "https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sort_values.html",
+  "checker_type": "pandas_equal",
+  "checker_options": {
+    "check_row_order": true
+  },
+  "visual_type": "slide"
+}

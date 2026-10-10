@@ -1,0 +1,162 @@
+{
+  "slug": "describe",
+  "order": 4,
+  "level": 1,
+  "title": "Quick statistics",
+  "method": "describe",
+  "category": "Look",
+  "language": "python",
+  "library": "pandas",
+  "source": "official",
+  "task": "Return the summary statistics (count, mean, std, min, quartiles, max) of the numeric columns of `df`.",
+  "inputs": {
+    "df": {
+      "type": "dataframe",
+      "columns": [
+        "city",
+        "temp",
+        "rain"
+      ],
+      "data": [
+        [
+          "Oslo",
+          4,
+          60
+        ],
+        [
+          "Rome",
+          18,
+          30
+        ],
+        [
+          "Cairo",
+          28,
+          2
+        ],
+        [
+          "Lima",
+          19,
+          1
+        ],
+        [
+          "Tokyo",
+          16,
+          120
+        ]
+      ]
+    }
+  },
+  "target": {
+    "type": "dataframe",
+    "columns": [
+      "temp",
+      "rain"
+    ],
+    "data": [
+      [
+        5.0,
+        5.0
+      ],
+      [
+        17.0,
+        42.6
+      ],
+      [
+        8.602325267042627,
+        49.576203969243146
+      ],
+      [
+        4.0,
+        1.0
+      ],
+      [
+        16.0,
+        2.0
+      ],
+      [
+        18.0,
+        30.0
+      ],
+      [
+        19.0,
+        60.0
+      ],
+      [
+        28.0,
+        120.0
+      ]
+    ],
+    "index": [
+      "count",
+      "mean",
+      "std",
+      "min",
+      "25%",
+      "50%",
+      "75%",
+      "max"
+    ]
+  },
+  "starter_code": "result = ",
+  "hint_1": "One method computes all the usual statistics at once and skips text columns.",
+  "hint_2": "result = df.________()",
+  "example": {
+    "inputs": {
+      "products": {
+        "type": "dataframe",
+        "columns": [
+          "name",
+          "category",
+          "price",
+          "stock"
+        ],
+        "data": [
+          [
+            "Desk",
+            "office",
+            120,
+            4
+          ],
+          [
+            "Lamp",
+            "home",
+            25,
+            0
+          ],
+          [
+            "Pen",
+            "office",
+            2,
+            300
+          ],
+          [
+            "Chair",
+            "office",
+            85,
+            12
+          ],
+          [
+            "Rug",
+            "home",
+            60,
+            3
+          ],
+          [
+            "Mug",
+            "home",
+            8,
+            0
+          ]
+        ]
+      }
+    },
+    "code": "result = products.describe()",
+    "note": ""
+  },
+  "reference_solution": "result = df.describe()",
+  "why": "`describe()` looks only at numeric columns by default and returns one row per statistic.",
+  "docs_url": "https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html",
+  "checker_type": "pandas_equal",
+  "checker_options": {},
+  "visual_type": "appear"
+}

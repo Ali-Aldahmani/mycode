@@ -1,0 +1,152 @@
+{
+  "slug": "select-columns",
+  "order": 7,
+  "level": 2,
+  "title": "Several columns",
+  "method": "df[[cols]]",
+  "category": "Pick",
+  "language": "python",
+  "library": "pandas",
+  "source": "official",
+  "task": "Return only the `name` and `price` columns, in that order.",
+  "inputs": {
+    "df": {
+      "type": "dataframe",
+      "columns": [
+        "name",
+        "category",
+        "price",
+        "stock"
+      ],
+      "data": [
+        [
+          "Desk",
+          "office",
+          120,
+          4
+        ],
+        [
+          "Lamp",
+          "home",
+          25,
+          0
+        ],
+        [
+          "Pen",
+          "office",
+          2,
+          300
+        ],
+        [
+          "Chair",
+          "office",
+          85,
+          12
+        ],
+        [
+          "Rug",
+          "home",
+          60,
+          3
+        ],
+        [
+          "Mug",
+          "home",
+          8,
+          0
+        ]
+      ]
+    }
+  },
+  "target": {
+    "type": "dataframe",
+    "columns": [
+      "name",
+      "price"
+    ],
+    "data": [
+      [
+        "Desk",
+        120
+      ],
+      [
+        "Lamp",
+        25
+      ],
+      [
+        "Pen",
+        2
+      ],
+      [
+        "Chair",
+        85
+      ],
+      [
+        "Rug",
+        60
+      ],
+      [
+        "Mug",
+        8
+      ]
+    ]
+  },
+  "starter_code": "result = ",
+  "hint_1": "Put a list of column names inside the brackets.",
+  "hint_2": "result = df[[___, ___]]",
+  "example": {
+    "inputs": {
+      "books": {
+        "type": "dataframe",
+        "columns": [
+          "title",
+          "author",
+          "year",
+          "pages"
+        ],
+        "data": [
+          [
+            "Dune",
+            "Herbert",
+            1965,
+            412
+          ],
+          [
+            "Emma",
+            "Austen",
+            1815,
+            474
+          ],
+          [
+            "Ulysses",
+            "Joyce",
+            1922,
+            730
+          ],
+          [
+            "Beloved",
+            "Morrison",
+            1987,
+            324
+          ],
+          [
+            "Hamlet",
+            "Shakespeare",
+            1603,
+            104
+          ]
+        ]
+      }
+    },
+    "code": "result = books[['title', 'year']]",
+    "note": ""
+  },
+  "reference_solution": "result = df[['name', 'price']]",
+  "why": "Passing a list (double brackets) returns a DataFrame with the columns in the order you listed.",
+  "docs_url": "https://pandas.pydata.org/docs/user_guide/indexing.html#basics",
+  "checker_type": "pandas_equal",
+  "checker_options": {
+    "check_column_order": true
+  },
+  "visual_type": "fade_out"
+}

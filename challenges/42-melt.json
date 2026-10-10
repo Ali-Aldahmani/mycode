@@ -1,0 +1,133 @@
+{
+  "slug": "melt",
+  "order": 42,
+  "level": 8,
+  "title": "Wide to long",
+  "method": "melt",
+  "category": "Reshape",
+  "language": "python",
+  "library": "pandas",
+  "source": "official",
+  "task": "Turn the subject columns into rows with columns `student`, `subject`, `score`.",
+  "inputs": {
+    "df": {
+      "type": "dataframe",
+      "columns": [
+        "student",
+        "math",
+        "art",
+        "music"
+      ],
+      "data": [
+        [
+          "Ana",
+          90,
+          75,
+          60
+        ],
+        [
+          "Ben",
+          68,
+          88,
+          79
+        ],
+        [
+          "Cleo",
+          82,
+          91,
+          70
+        ]
+      ]
+    }
+  },
+  "target": {
+    "type": "dataframe",
+    "columns": [
+      "student",
+      "subject",
+      "score"
+    ],
+    "data": [
+      [
+        "Ana",
+        "math",
+        90
+      ],
+      [
+        "Ben",
+        "math",
+        68
+      ],
+      [
+        "Cleo",
+        "math",
+        82
+      ],
+      [
+        "Ana",
+        "art",
+        75
+      ],
+      [
+        "Ben",
+        "art",
+        88
+      ],
+      [
+        "Cleo",
+        "art",
+        91
+      ],
+      [
+        "Ana",
+        "music",
+        60
+      ],
+      [
+        "Ben",
+        "music",
+        79
+      ],
+      [
+        "Cleo",
+        "music",
+        70
+      ]
+    ]
+  },
+  "starter_code": "result = ",
+  "hint_1": "Keep `student` as an identifier and unpivot every other column into two columns: the name and the value.",
+  "hint_2": "result = df.melt(id_vars=___, var_name=___, value_name=___)",
+  "example": {
+    "inputs": {
+      "temps": {
+        "type": "dataframe",
+        "columns": [
+          "city",
+          "jan",
+          "jul"
+        ],
+        "data": [
+          [
+            "Oslo",
+            -4,
+            17
+          ],
+          [
+            "Rome",
+            8,
+            25
+          ]
+        ]
+      }
+    },
+    "code": "result = temps.melt(id_vars='city', var_name='month', value_name='temp')",
+    "note": ""
+  },
+  "reference_solution": "result = df.melt(id_vars='student', var_name='subject', value_name='score')",
+  "why": "`melt` is the opposite of pivot: each value cell becomes its own row, and its old column name goes into `subject`.",
+  "docs_url": "https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.melt.html",
+  "checker_type": "pandas_equal",
+  "checker_options": {},
+  "visual_type": "move_cells"
+}

@@ -1,0 +1,148 @@
+{
+  "slug": "first-rows-head",
+  "order": 1,
+  "level": 1,
+  "title": "First rows",
+  "method": "head",
+  "category": "Look",
+  "language": "python",
+  "library": "pandas",
+  "source": "official",
+  "task": "Return the first 3 rows of `df`.",
+  "inputs": {
+    "df": {
+      "type": "dataframe",
+      "columns": [
+        "fruit",
+        "color",
+        "price",
+        "stock"
+      ],
+      "data": [
+        [
+          "apple",
+          "red",
+          1.2,
+          40
+        ],
+        [
+          "banana",
+          "yellow",
+          0.5,
+          120
+        ],
+        [
+          "cherry",
+          "red",
+          4.0,
+          15
+        ],
+        [
+          "kiwi",
+          "green",
+          0.8,
+          60
+        ],
+        [
+          "lemon",
+          "yellow",
+          0.6,
+          80
+        ],
+        [
+          "mango",
+          "orange",
+          2.5,
+          25
+        ],
+        [
+          "plum",
+          "purple",
+          1.5,
+          30
+        ]
+      ]
+    }
+  },
+  "target": {
+    "type": "dataframe",
+    "columns": [
+      "fruit",
+      "color",
+      "price",
+      "stock"
+    ],
+    "data": [
+      [
+        "apple",
+        "red",
+        1.2,
+        40
+      ],
+      [
+        "banana",
+        "yellow",
+        0.5,
+        120
+      ],
+      [
+        "cherry",
+        "red",
+        4.0,
+        15
+      ]
+    ]
+  },
+  "starter_code": "result = ",
+  "hint_1": "There is a method that returns rows from the top of the table.",
+  "hint_2": "result = df.____(___)",
+  "example": {
+    "inputs": {
+      "cities": {
+        "type": "dataframe",
+        "columns": [
+          "city",
+          "country",
+          "population"
+        ],
+        "data": [
+          [
+            "Paris",
+            "France",
+            2.1
+          ],
+          [
+            "Berlin",
+            "Germany",
+            3.6
+          ],
+          [
+            "Madrid",
+            "Spain",
+            3.3
+          ],
+          [
+            "Rome",
+            "Italy",
+            2.8
+          ],
+          [
+            "Lisbon",
+            "Portugal",
+            0.5
+          ]
+        ]
+      }
+    },
+    "code": "result = cities.head(2)",
+    "note": ""
+  },
+  "reference_solution": "result = df.head(3)",
+  "why": "`head(n)` keeps the first n rows in their original order (default 5). `tail(n)` does the same from the bottom.",
+  "docs_url": "https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.head.html",
+  "checker_type": "pandas_equal",
+  "checker_options": {
+    "check_row_order": true
+  },
+  "visual_type": "fade_out"
+}

@@ -1,0 +1,150 @@
+{
+  "slug": "multiple-conditions",
+  "order": 9,
+  "level": 2,
+  "title": "Two conditions",
+  "method": "& and |",
+  "category": "Pick",
+  "language": "python",
+  "library": "pandas",
+  "source": "official",
+  "task": "Keep the people who live in Paris **and** are older than 30.",
+  "inputs": {
+    "df": {
+      "type": "dataframe",
+      "columns": [
+        "name",
+        "city",
+        "age",
+        "score"
+      ],
+      "data": [
+        [
+          "Ana",
+          "Paris",
+          34,
+          88
+        ],
+        [
+          "Ben",
+          "Rome",
+          28,
+          72
+        ],
+        [
+          "Cleo",
+          "Paris",
+          45,
+          95
+        ],
+        [
+          "Dev",
+          "Oslo",
+          31,
+          64
+        ],
+        [
+          "Eva",
+          "Rome",
+          52,
+          81
+        ],
+        [
+          "Finn",
+          "Oslo",
+          23,
+          90
+        ]
+      ]
+    }
+  },
+  "target": {
+    "type": "dataframe",
+    "columns": [
+      "name",
+      "city",
+      "age",
+      "score"
+    ],
+    "data": [
+      [
+        "Ana",
+        "Paris",
+        34,
+        88
+      ],
+      [
+        "Cleo",
+        "Paris",
+        45,
+        95
+      ]
+    ],
+    "index": [
+      0,
+      2
+    ]
+  },
+  "starter_code": "result = ",
+  "hint_1": "Build two conditions and combine them so both must be true. Each condition needs its own parentheses.",
+  "hint_2": "result = df[(df[___] == ___) _ (df[___] > ___)]",
+  "example": {
+    "inputs": {
+      "products": {
+        "type": "dataframe",
+        "columns": [
+          "name",
+          "category",
+          "price",
+          "stock"
+        ],
+        "data": [
+          [
+            "Desk",
+            "office",
+            120,
+            4
+          ],
+          [
+            "Lamp",
+            "home",
+            25,
+            0
+          ],
+          [
+            "Pen",
+            "office",
+            2,
+            300
+          ],
+          [
+            "Chair",
+            "office",
+            85,
+            12
+          ],
+          [
+            "Rug",
+            "home",
+            60,
+            3
+          ],
+          [
+            "Mug",
+            "home",
+            8,
+            0
+          ]
+        ]
+      }
+    },
+    "code": "result = products[(products['category'] == 'home') | (products['price'] < 5)]",
+    "note": ""
+  },
+  "reference_solution": "result = df[(df['city'] == 'Paris') & (df['age'] > 30)]",
+  "why": "Use `&` for and, `|` for or, `~` for not. Python's `and`/`or` don't work on whole columns, and the parentheses are required.",
+  "docs_url": "https://pandas.pydata.org/docs/user_guide/indexing.html#boolean-indexing",
+  "checker_type": "pandas_equal",
+  "checker_options": {},
+  "visual_type": "fade_out"
+}

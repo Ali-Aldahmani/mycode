@@ -1,0 +1,127 @@
+{
+  "slug": "pivot",
+  "order": 40,
+  "level": 8,
+  "title": "Long to wide",
+  "method": "pivot",
+  "category": "Reshape",
+  "language": "python",
+  "library": "pandas",
+  "source": "official",
+  "task": "Reshape so there is one row per `day`, one column per `store`, and `sales` in the cells.",
+  "inputs": {
+    "df": {
+      "type": "dataframe",
+      "columns": [
+        "day",
+        "store",
+        "sales"
+      ],
+      "data": [
+        [
+          "Mon",
+          "A",
+          3
+        ],
+        [
+          "Mon",
+          "B",
+          5
+        ],
+        [
+          "Tue",
+          "A",
+          4
+        ],
+        [
+          "Tue",
+          "B",
+          2
+        ],
+        [
+          "Wed",
+          "A",
+          6
+        ],
+        [
+          "Wed",
+          "B",
+          1
+        ]
+      ]
+    }
+  },
+  "target": {
+    "type": "dataframe",
+    "columns": [
+      "A",
+      "B"
+    ],
+    "data": [
+      [
+        3,
+        5
+      ],
+      [
+        4,
+        2
+      ],
+      [
+        6,
+        1
+      ]
+    ],
+    "index": [
+      "Mon",
+      "Tue",
+      "Wed"
+    ],
+    "index_name": "day",
+    "columns_name": "store"
+  },
+  "starter_code": "result = ",
+  "hint_1": "Tell pandas which column becomes the rows, which becomes the columns, and which fills the cells.",
+  "hint_2": "result = df.pivot(index=___, columns=___, values=___)",
+  "example": {
+    "inputs": {
+      "temps": {
+        "type": "dataframe",
+        "columns": [
+          "city",
+          "month",
+          "temp"
+        ],
+        "data": [
+          [
+            "Oslo",
+            "Jan",
+            -4
+          ],
+          [
+            "Oslo",
+            "Jul",
+            17
+          ],
+          [
+            "Rome",
+            "Jan",
+            8
+          ],
+          [
+            "Rome",
+            "Jul",
+            25
+          ]
+        ]
+      }
+    },
+    "code": "result = temps.pivot(index='city', columns='month', values='temp')",
+    "note": ""
+  },
+  "reference_solution": "result = df.pivot(index='day', columns='store', values='sales')",
+  "why": "Each (day, store) pair appears once, so every value has exactly one cell to move into. With duplicates you need `pivot_table`.",
+  "docs_url": "https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.pivot.html",
+  "checker_type": "pandas_equal",
+  "checker_options": {},
+  "visual_type": "move_cells"
+}

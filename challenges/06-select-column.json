@@ -1,0 +1,123 @@
+{
+  "slug": "select-column",
+  "order": 6,
+  "level": 2,
+  "title": "One column",
+  "method": "df[col]",
+  "category": "Pick",
+  "language": "python",
+  "library": "pandas",
+  "source": "official",
+  "task": "Return the `price` column of `df`.",
+  "inputs": {
+    "df": {
+      "type": "dataframe",
+      "columns": [
+        "name",
+        "category",
+        "price",
+        "stock"
+      ],
+      "data": [
+        [
+          "Desk",
+          "office",
+          120,
+          4
+        ],
+        [
+          "Lamp",
+          "home",
+          25,
+          0
+        ],
+        [
+          "Pen",
+          "office",
+          2,
+          300
+        ],
+        [
+          "Chair",
+          "office",
+          85,
+          12
+        ],
+        [
+          "Rug",
+          "home",
+          60,
+          3
+        ],
+        [
+          "Mug",
+          "home",
+          8,
+          0
+        ]
+      ]
+    }
+  },
+  "target": {
+    "type": "series",
+    "name": "price",
+    "data": [
+      120,
+      25,
+      2,
+      85,
+      60,
+      8
+    ]
+  },
+  "starter_code": "result = ",
+  "hint_1": "Use square brackets on the DataFrame with the column's name.",
+  "hint_2": "result = df[___]",
+  "example": {
+    "inputs": {
+      "cities": {
+        "type": "dataframe",
+        "columns": [
+          "city",
+          "country",
+          "population"
+        ],
+        "data": [
+          [
+            "Paris",
+            "France",
+            2.1
+          ],
+          [
+            "Berlin",
+            "Germany",
+            3.6
+          ],
+          [
+            "Madrid",
+            "Spain",
+            3.3
+          ],
+          [
+            "Rome",
+            "Italy",
+            2.8
+          ],
+          [
+            "Lisbon",
+            "Portugal",
+            0.5
+          ]
+        ]
+      }
+    },
+    "code": "result = cities['country']",
+    "note": ""
+  },
+  "reference_solution": "result = df['price']",
+  "why": "Selecting one name with `df['col']` returns a Series. The index (row labels) comes along.",
+  "docs_url": "https://pandas.pydata.org/docs/user_guide/indexing.html#basics",
+  "checker_type": "pandas_equal",
+  "checker_options": {},
+  "visual_type": "fade_out"
+}

@@ -1,0 +1,130 @@
+{
+  "slug": "add-column",
+  "order": 14,
+  "level": 3,
+  "title": "New column",
+  "method": "df['new'] = ...",
+  "category": "Change",
+  "language": "python",
+  "library": "pandas",
+  "source": "official",
+  "task": "Add a column `total` equal to `price * qty`, then return the whole DataFrame.",
+  "inputs": {
+    "df": {
+      "type": "dataframe",
+      "columns": [
+        "item",
+        "price",
+        "qty"
+      ],
+      "data": [
+        [
+          "pen",
+          2.0,
+          10
+        ],
+        [
+          "book",
+          12.5,
+          2
+        ],
+        [
+          "bag",
+          30.0,
+          1
+        ],
+        [
+          "cup",
+          6.0,
+          4
+        ],
+        [
+          "map",
+          9.0,
+          3
+        ]
+      ]
+    }
+  },
+  "target": {
+    "type": "dataframe",
+    "columns": [
+      "item",
+      "price",
+      "qty",
+      "total"
+    ],
+    "data": [
+      [
+        "pen",
+        2.0,
+        10,
+        20.0
+      ],
+      [
+        "book",
+        12.5,
+        2,
+        25.0
+      ],
+      [
+        "bag",
+        30.0,
+        1,
+        30.0
+      ],
+      [
+        "cup",
+        6.0,
+        4,
+        24.0
+      ],
+      [
+        "map",
+        9.0,
+        3,
+        27.0
+      ]
+    ]
+  },
+  "starter_code": "df['total'] = \nresult = df",
+  "hint_1": "Assign to a column name that doesn't exist yet. The right side can be math between two columns.",
+  "hint_2": "df[___] = df[___] * df[___]\nresult = df",
+  "example": {
+    "inputs": {
+      "rooms": {
+        "type": "dataframe",
+        "columns": [
+          "room",
+          "width",
+          "length"
+        ],
+        "data": [
+          [
+            "kitchen",
+            3,
+            4
+          ],
+          [
+            "bedroom",
+            4,
+            5
+          ],
+          [
+            "bath",
+            2,
+            3
+          ]
+        ]
+      }
+    },
+    "code": "rooms['area'] = rooms['width'] * rooms['length']\nresult = rooms",
+    "note": ""
+  },
+  "reference_solution": "df['total'] = df['price'] * df['qty']\nresult = df",
+  "why": "Column math is vectorized: pandas multiplies row by row and stores the results in the new column, aligned by index.",
+  "docs_url": "https://pandas.pydata.org/docs/user_guide/dsintro.html#column-selection-addition-deletion",
+  "checker_type": "pandas_equal",
+  "checker_options": {},
+  "visual_type": "scan"
+}

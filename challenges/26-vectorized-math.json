@@ -1,0 +1,90 @@
+{
+  "slug": "vectorized-math",
+  "order": 26,
+  "level": 5,
+  "title": "Math on a column",
+  "method": "vectorized math",
+  "category": "Transform",
+  "language": "python",
+  "library": "pandas",
+  "source": "official",
+  "task": "Return the `price` column with 20% tax added (price × 1.2).",
+  "inputs": {
+    "df": {
+      "type": "dataframe",
+      "columns": [
+        "item",
+        "price"
+      ],
+      "data": [
+        [
+          "pen",
+          2.0
+        ],
+        [
+          "book",
+          12.5
+        ],
+        [
+          "bag",
+          30.0
+        ],
+        [
+          "cup",
+          6.0
+        ],
+        [
+          "map",
+          9.0
+        ]
+      ]
+    }
+  },
+  "target": {
+    "type": "series",
+    "name": "price",
+    "data": [
+      2.4,
+      15.0,
+      36.0,
+      7.199999999999999,
+      10.799999999999999
+    ]
+  },
+  "starter_code": "result = ",
+  "hint_1": "Do the math on the whole column at once, no loop needed.",
+  "hint_2": "result = df[___] * ___",
+  "example": {
+    "inputs": {
+      "temps": {
+        "type": "dataframe",
+        "columns": [
+          "city",
+          "celsius"
+        ],
+        "data": [
+          [
+            "Oslo",
+            4.0
+          ],
+          [
+            "Rome",
+            18.0
+          ],
+          [
+            "Cairo",
+            28.0
+          ]
+        ]
+      }
+    },
+    "code": "result = temps['celsius'] * 9 / 5 + 32",
+    "note": ""
+  },
+  "reference_solution": "result = df['price'] * 1.2",
+  "why": "Arithmetic on a Series applies to every value. The result keeps the index and the column name.",
+  "docs_url": "https://pandas.pydata.org/docs/user_guide/basics.html#flexible-binary-operations",
+  "checker_type": "pandas_equal",
+  "checker_options": {},
+  "visual_type": "scan"
+}

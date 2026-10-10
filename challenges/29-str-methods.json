@@ -1,0 +1,86 @@
+{
+  "slug": "str-methods",
+  "order": 29,
+  "level": 5,
+  "title": "Clean text",
+  "method": ".str",
+  "category": "Transform",
+  "language": "python",
+  "library": "pandas",
+  "source": "official",
+  "task": "The names have extra spaces and mixed case. Return them trimmed and in lower case.",
+  "inputs": {
+    "df": {
+      "type": "dataframe",
+      "columns": [
+        "name",
+        "team"
+      ],
+      "data": [
+        [
+          "  Ana ",
+          "red"
+        ],
+        [
+          "BEN",
+          "blue"
+        ],
+        [
+          " Cleo",
+          "red"
+        ],
+        [
+          "dev  ",
+          "green"
+        ],
+        [
+          "Eva",
+          "blue"
+        ]
+      ]
+    }
+  },
+  "target": {
+    "type": "series",
+    "name": "name",
+    "data": [
+      "ana",
+      "ben",
+      "cleo",
+      "dev",
+      "eva"
+    ]
+  },
+  "starter_code": "result = ",
+  "hint_1": "Text columns have a `.str` accessor with string methods; you can chain two of them.",
+  "hint_2": "result = df[___].str._____().str._____()",
+  "example": {
+    "inputs": {
+      "tags": {
+        "type": "dataframe",
+        "columns": [
+          "tag"
+        ],
+        "data": [
+          [
+            " Python"
+          ],
+          [
+            "SQL "
+          ],
+          [
+            " pandas "
+          ]
+        ]
+      }
+    },
+    "code": "result = tags['tag'].str.strip().str.upper()",
+    "note": ""
+  },
+  "reference_solution": "result = df['name'].str.strip().str.lower()",
+  "why": "`.str` applies a Python string method to every value. Chaining runs each step in order: strip first, then lower.",
+  "docs_url": "https://pandas.pydata.org/docs/user_guide/text.html",
+  "checker_type": "pandas_equal",
+  "checker_options": {},
+  "visual_type": "scan"
+}

@@ -1,0 +1,110 @@
+{
+  "slug": "rename",
+  "order": 15,
+  "level": 3,
+  "title": "Rename columns",
+  "method": "rename",
+  "category": "Change",
+  "language": "python",
+  "library": "pandas",
+  "source": "official",
+  "task": "Rename the column `nm` to `name` and `yrs` to `years`.",
+  "inputs": {
+    "df": {
+      "type": "dataframe",
+      "columns": [
+        "nm",
+        "yrs",
+        "team"
+      ],
+      "data": [
+        [
+          "Ana",
+          3,
+          "red"
+        ],
+        [
+          "Ben",
+          7,
+          "blue"
+        ],
+        [
+          "Cleo",
+          1,
+          "red"
+        ],
+        [
+          "Dev",
+          4,
+          "green"
+        ]
+      ]
+    }
+  },
+  "target": {
+    "type": "dataframe",
+    "columns": [
+      "name",
+      "years",
+      "team"
+    ],
+    "data": [
+      [
+        "Ana",
+        3,
+        "red"
+      ],
+      [
+        "Ben",
+        7,
+        "blue"
+      ],
+      [
+        "Cleo",
+        1,
+        "red"
+      ],
+      [
+        "Dev",
+        4,
+        "green"
+      ]
+    ]
+  },
+  "starter_code": "result = ",
+  "hint_1": "Use a method that takes a mapping from old names to new names.",
+  "hint_2": "result = df.______(columns={___: ___, ___: ___})",
+  "example": {
+    "inputs": {
+      "cars": {
+        "type": "dataframe",
+        "columns": [
+          "mdl",
+          "hp"
+        ],
+        "data": [
+          [
+            "Golf",
+            110
+          ],
+          [
+            "Clio",
+            90
+          ],
+          [
+            "Polo",
+            95
+          ]
+        ]
+      }
+    },
+    "code": "result = cars.rename(columns={'mdl': 'model'})",
+    "note": ""
+  },
+  "reference_solution": "result = df.rename(columns={'nm': 'name', 'yrs': 'years'})",
+  "why": "`rename(columns={old: new})` returns a new DataFrame; columns not in the mapping keep their names.",
+  "docs_url": "https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.rename.html",
+  "checker_type": "pandas_equal",
+  "checker_options": {},
+  "visual_type": "appear"
+}

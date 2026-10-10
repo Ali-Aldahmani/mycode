@@ -1,0 +1,135 @@
+{
+  "slug": "isna",
+  "order": 21,
+  "level": 4,
+  "title": "Find missing values",
+  "method": "isna",
+  "category": "Clean",
+  "language": "python",
+  "library": "pandas",
+  "source": "official",
+  "task": "Return a table of True/False showing where values are missing in `df`.",
+  "inputs": {
+    "df": {
+      "type": "dataframe",
+      "columns": [
+        "name",
+        "age",
+        "city"
+      ],
+      "data": [
+        [
+          "Ana",
+          34,
+          "Paris"
+        ],
+        [
+          "Ben",
+          null,
+          "Rome"
+        ],
+        [
+          "Cleo",
+          45,
+          null
+        ],
+        [
+          "Dev",
+          31,
+          "Oslo"
+        ],
+        [
+          "Eva",
+          null,
+          null
+        ],
+        [
+          "Finn",
+          23,
+          "Oslo"
+        ]
+      ]
+    }
+  },
+  "target": {
+    "type": "dataframe",
+    "columns": [
+      "name",
+      "age",
+      "city"
+    ],
+    "data": [
+      [
+        false,
+        false,
+        false
+      ],
+      [
+        false,
+        true,
+        false
+      ],
+      [
+        false,
+        false,
+        true
+      ],
+      [
+        false,
+        false,
+        false
+      ],
+      [
+        false,
+        true,
+        true
+      ],
+      [
+        false,
+        false,
+        false
+      ]
+    ],
+    "dtypes": {
+      "name": "bool",
+      "age": "bool",
+      "city": "bool"
+    }
+  },
+  "starter_code": "result = ",
+  "hint_1": "There is a method that answers 'is this missing?' for every single cell.",
+  "hint_2": "result = df.____()",
+  "example": {
+    "inputs": {
+      "temps": {
+        "type": "dataframe",
+        "columns": [
+          "day",
+          "temp"
+        ],
+        "data": [
+          [
+            "Mon",
+            12.0
+          ],
+          [
+            "Tue",
+            null
+          ],
+          [
+            "Wed",
+            15.0
+          ]
+        ]
+      }
+    },
+    "code": "result = temps.isna()",
+    "note": ""
+  },
+  "reference_solution": "result = df.isna()",
+  "why": "`isna()` keeps the shape of the table and replaces every value with True (missing) or False. NaN and None both count.",
+  "docs_url": "https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.isna.html",
+  "checker_type": "pandas_equal",
+  "checker_options": {},
+  "visual_type": "scan"
+}

@@ -1,0 +1,136 @@
+{
+  "slug": "nlargest",
+  "order": 18,
+  "level": 3,
+  "title": "Top N",
+  "method": "nlargest",
+  "category": "Change",
+  "language": "python",
+  "library": "pandas",
+  "source": "official",
+  "task": "Return the 3 products with the biggest `sales`, largest first.",
+  "inputs": {
+    "df": {
+      "type": "dataframe",
+      "columns": [
+        "product",
+        "sales",
+        "region"
+      ],
+      "data": [
+        [
+          "A",
+          120,
+          "north"
+        ],
+        [
+          "B",
+          340,
+          "south"
+        ],
+        [
+          "C",
+          90,
+          "north"
+        ],
+        [
+          "D",
+          410,
+          "east"
+        ],
+        [
+          "E",
+          205,
+          "south"
+        ],
+        [
+          "F",
+          60,
+          "east"
+        ]
+      ]
+    }
+  },
+  "target": {
+    "type": "dataframe",
+    "columns": [
+      "product",
+      "sales",
+      "region"
+    ],
+    "data": [
+      [
+        "D",
+        410,
+        "east"
+      ],
+      [
+        "B",
+        340,
+        "south"
+      ],
+      [
+        "E",
+        205,
+        "south"
+      ]
+    ],
+    "index": [
+      3,
+      1,
+      4
+    ]
+  },
+  "starter_code": "result = ",
+  "hint_1": "There is a shortcut for 'sort descending, then take the first rows'.",
+  "hint_2": "result = df.________(_, ___)",
+  "example": {
+    "inputs": {
+      "cities": {
+        "type": "dataframe",
+        "columns": [
+          "city",
+          "country",
+          "population"
+        ],
+        "data": [
+          [
+            "Paris",
+            "France",
+            2.1
+          ],
+          [
+            "Berlin",
+            "Germany",
+            3.6
+          ],
+          [
+            "Madrid",
+            "Spain",
+            3.3
+          ],
+          [
+            "Rome",
+            "Italy",
+            2.8
+          ],
+          [
+            "Lisbon",
+            "Portugal",
+            0.5
+          ]
+        ]
+      }
+    },
+    "code": "result = cities.nlargest(2, 'population')",
+    "note": ""
+  },
+  "reference_solution": "result = df.nlargest(3, 'sales')",
+  "why": "`nlargest(n, col)` is the same as `sort_values(col, ascending=False).head(n)`, but faster and clearer.",
+  "docs_url": "https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.nlargest.html",
+  "checker_type": "pandas_equal",
+  "checker_options": {
+    "check_row_order": true
+  },
+  "visual_type": "slide"
+}

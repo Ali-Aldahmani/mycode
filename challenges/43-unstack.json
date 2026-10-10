@@ -1,0 +1,112 @@
+{
+  "slug": "unstack",
+  "order": 43,
+  "level": 8,
+  "title": "Index level to columns",
+  "method": "stack / unstack",
+  "category": "Reshape",
+  "language": "python",
+  "library": "pandas",
+  "source": "official",
+  "task": "`s` is indexed by (city, year). Move the `year` level into columns.",
+  "inputs": {
+    "s": {
+      "type": "series",
+      "name": "visitors",
+      "data": [
+        12,
+        15,
+        30,
+        33
+      ],
+      "index": [
+        [
+          "Oslo",
+          2023
+        ],
+        [
+          "Oslo",
+          2024
+        ],
+        [
+          "Rome",
+          2023
+        ],
+        [
+          "Rome",
+          2024
+        ]
+      ],
+      "index_name": [
+        "city",
+        "year"
+      ]
+    }
+  },
+  "target": {
+    "type": "dataframe",
+    "columns": [
+      2023,
+      2024
+    ],
+    "data": [
+      [
+        12,
+        15
+      ],
+      [
+        30,
+        33
+      ]
+    ],
+    "index": [
+      "Oslo",
+      "Rome"
+    ],
+    "index_name": "city",
+    "columns_name": "year"
+  },
+  "starter_code": "result = ",
+  "hint_1": "One method takes the innermost index level and spreads it out as columns.",
+  "hint_2": "result = s._______()",
+  "example": {
+    "inputs": {
+      "t": {
+        "type": "series",
+        "name": "n",
+        "data": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "index": [
+          [
+            "a",
+            "x"
+          ],
+          [
+            "a",
+            "y"
+          ],
+          [
+            "b",
+            "x"
+          ],
+          [
+            "b",
+            "y"
+          ]
+        ]
+      }
+    },
+    "code": "result = t.unstack()",
+    "note": ""
+  },
+  "reference_solution": "result = s.unstack()",
+  "why": "`unstack()` pivots the last index level into columns. `stack()` does the reverse, folding columns back into the index.",
+  "docs_url": "https://pandas.pydata.org/docs/reference/api/pandas.Series.unstack.html",
+  "checker_type": "pandas_equal",
+  "checker_options": {},
+  "visual_type": "move_cells"
+}

@@ -1,0 +1,129 @@
+{
+  "slug": "dropna",
+  "order": 22,
+  "level": 4,
+  "title": "Drop missing rows",
+  "method": "dropna",
+  "category": "Clean",
+  "language": "python",
+  "library": "pandas",
+  "source": "official",
+  "task": "Remove every row that has at least one missing value.",
+  "inputs": {
+    "df": {
+      "type": "dataframe",
+      "columns": [
+        "name",
+        "age",
+        "city"
+      ],
+      "data": [
+        [
+          "Ana",
+          34,
+          "Paris"
+        ],
+        [
+          "Ben",
+          null,
+          "Rome"
+        ],
+        [
+          "Cleo",
+          45,
+          null
+        ],
+        [
+          "Dev",
+          31,
+          "Oslo"
+        ],
+        [
+          "Eva",
+          null,
+          null
+        ],
+        [
+          "Finn",
+          23,
+          "Oslo"
+        ]
+      ]
+    }
+  },
+  "target": {
+    "type": "dataframe",
+    "columns": [
+      "name",
+      "age",
+      "city"
+    ],
+    "data": [
+      [
+        "Ana",
+        34.0,
+        "Paris"
+      ],
+      [
+        "Dev",
+        31.0,
+        "Oslo"
+      ],
+      [
+        "Finn",
+        23.0,
+        "Oslo"
+      ]
+    ],
+    "index": [
+      0,
+      3,
+      5
+    ]
+  },
+  "starter_code": "result = ",
+  "hint_1": "One method drops the rows that contain NaN.",
+  "hint_2": "result = df.______()",
+  "example": {
+    "inputs": {
+      "temps": {
+        "type": "dataframe",
+        "columns": [
+          "day",
+          "temp",
+          "wind"
+        ],
+        "data": [
+          [
+            "Mon",
+            12.0,
+            5.0
+          ],
+          [
+            "Tue",
+            null,
+            7.0
+          ],
+          [
+            "Wed",
+            15.0,
+            null
+          ],
+          [
+            "Thu",
+            9.0,
+            3.0
+          ]
+        ]
+      }
+    },
+    "code": "result = temps.dropna()",
+    "note": ""
+  },
+  "reference_solution": "result = df.dropna()",
+  "why": "By default `dropna()` drops a row if any of its values is missing. The surviving rows keep their index labels.",
+  "docs_url": "https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.dropna.html",
+  "checker_type": "pandas_equal",
+  "checker_options": {},
+  "visual_type": "fade_out"
+}

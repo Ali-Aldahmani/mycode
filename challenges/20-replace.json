@@ -1,0 +1,108 @@
+{
+  "slug": "replace",
+  "order": 20,
+  "level": 3,
+  "title": "Replace values",
+  "method": "replace",
+  "category": "Change",
+  "language": "python",
+  "library": "pandas",
+  "source": "official",
+  "task": "In `status`, replace `'Y'` with `'yes'` and `'N'` with `'no'`.",
+  "inputs": {
+    "df": {
+      "type": "dataframe",
+      "columns": [
+        "order",
+        "status"
+      ],
+      "data": [
+        [
+          101,
+          "Y"
+        ],
+        [
+          102,
+          "N"
+        ],
+        [
+          103,
+          "Y"
+        ],
+        [
+          104,
+          "Y"
+        ],
+        [
+          105,
+          "N"
+        ]
+      ]
+    }
+  },
+  "target": {
+    "type": "dataframe",
+    "columns": [
+      "order",
+      "status"
+    ],
+    "data": [
+      [
+        101,
+        "yes"
+      ],
+      [
+        102,
+        "no"
+      ],
+      [
+        103,
+        "yes"
+      ],
+      [
+        104,
+        "yes"
+      ],
+      [
+        105,
+        "no"
+      ]
+    ]
+  },
+  "starter_code": "result = ",
+  "hint_1": "Use a method that swaps specific values for other values using a mapping.",
+  "hint_2": "result = df._______({___: ___, ___: ___})",
+  "example": {
+    "inputs": {
+      "sizes": {
+        "type": "dataframe",
+        "columns": [
+          "shirt",
+          "size"
+        ],
+        "data": [
+          [
+            "a",
+            "S"
+          ],
+          [
+            "b",
+            "L"
+          ],
+          [
+            "c",
+            "S"
+          ]
+        ]
+      }
+    },
+    "code": "result = sizes.replace({'S': 'small', 'L': 'large'})",
+    "note": ""
+  },
+  "reference_solution": "result = df.replace({'Y': 'yes', 'N': 'no'})",
+  "why": "`replace` only changes cells whose whole value matches a key of the mapping; everything else stays the same.",
+  "docs_url": "https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.replace.html",
+  "checker_type": "pandas_equal",
+  "checker_options": {},
+  "visual_type": "scan"
+}

@@ -1,0 +1,90 @@
+{
+  "slug": "map",
+  "order": 27,
+  "level": 5,
+  "title": "Map values",
+  "method": "map",
+  "category": "Transform",
+  "language": "python",
+  "library": "pandas",
+  "source": "official",
+  "task": "Turn the size codes into words: S → small, M → medium, L → large.",
+  "inputs": {
+    "df": {
+      "type": "dataframe",
+      "columns": [
+        "shirt",
+        "size"
+      ],
+      "data": [
+        [
+          "a",
+          "M"
+        ],
+        [
+          "b",
+          "S"
+        ],
+        [
+          "c",
+          "L"
+        ],
+        [
+          "d",
+          "M"
+        ],
+        [
+          "e",
+          "S"
+        ]
+      ]
+    }
+  },
+  "target": {
+    "type": "series",
+    "name": "size",
+    "data": [
+      "medium",
+      "small",
+      "large",
+      "medium",
+      "small"
+    ]
+  },
+  "starter_code": "result = ",
+  "hint_1": "Look each value up in a dictionary, one value at a time.",
+  "hint_2": "result = df[___].___({___: ___, ___: ___, ___: ___})",
+  "example": {
+    "inputs": {
+      "grades": {
+        "type": "dataframe",
+        "columns": [
+          "student",
+          "grade"
+        ],
+        "data": [
+          [
+            "Ana",
+            "A"
+          ],
+          [
+            "Ben",
+            "C"
+          ],
+          [
+            "Cleo",
+            "B"
+          ]
+        ]
+      }
+    },
+    "code": "result = grades['grade'].map({'A': 4, 'B': 3, 'C': 2})",
+    "note": ""
+  },
+  "reference_solution": "result = df['size'].map({'S': 'small', 'M': 'medium', 'L': 'large'})",
+  "why": "`map(dict)` replaces every value with its entry in the dict. Values missing from the dict become NaN.",
+  "docs_url": "https://pandas.pydata.org/docs/reference/api/pandas.Series.map.html",
+  "checker_type": "pandas_equal",
+  "checker_options": {},
+  "visual_type": "scan"
+}

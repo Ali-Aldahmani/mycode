@@ -1,0 +1,157 @@
+{
+  "slug": "query",
+  "order": 13,
+  "level": 2,
+  "title": "Filter with a query string",
+  "method": "query",
+  "category": "Pick",
+  "language": "python",
+  "library": "pandas",
+  "source": "official",
+  "task": "Using a query string, keep the people older than 30 who scored above 80.",
+  "inputs": {
+    "df": {
+      "type": "dataframe",
+      "columns": [
+        "name",
+        "city",
+        "age",
+        "score"
+      ],
+      "data": [
+        [
+          "Ana",
+          "Paris",
+          34,
+          88
+        ],
+        [
+          "Ben",
+          "Rome",
+          28,
+          72
+        ],
+        [
+          "Cleo",
+          "Paris",
+          45,
+          95
+        ],
+        [
+          "Dev",
+          "Oslo",
+          31,
+          64
+        ],
+        [
+          "Eva",
+          "Rome",
+          52,
+          81
+        ],
+        [
+          "Finn",
+          "Oslo",
+          23,
+          90
+        ]
+      ]
+    }
+  },
+  "target": {
+    "type": "dataframe",
+    "columns": [
+      "name",
+      "city",
+      "age",
+      "score"
+    ],
+    "data": [
+      [
+        "Ana",
+        "Paris",
+        34,
+        88
+      ],
+      [
+        "Cleo",
+        "Paris",
+        45,
+        95
+      ],
+      [
+        "Eva",
+        "Rome",
+        52,
+        81
+      ]
+    ],
+    "index": [
+      0,
+      2,
+      4
+    ]
+  },
+  "starter_code": "result = ",
+  "hint_1": "One method takes the whole condition as a piece of text that names the columns directly.",
+  "hint_2": "result = df._____('___ > ___ and ___ > ___')",
+  "example": {
+    "inputs": {
+      "products": {
+        "type": "dataframe",
+        "columns": [
+          "name",
+          "category",
+          "price",
+          "stock"
+        ],
+        "data": [
+          [
+            "Desk",
+            "office",
+            120,
+            4
+          ],
+          [
+            "Lamp",
+            "home",
+            25,
+            0
+          ],
+          [
+            "Pen",
+            "office",
+            2,
+            300
+          ],
+          [
+            "Chair",
+            "office",
+            85,
+            12
+          ],
+          [
+            "Rug",
+            "home",
+            60,
+            3
+          ],
+          [
+            "Mug",
+            "home",
+            8,
+            0
+          ]
+        ]
+      }
+    },
+    "code": "result = products.query('stock > 0 and price < 100')",
+    "note": ""
+  },
+  "reference_solution": "result = df.query('age > 30 and score > 80')",
+  "why": "`query` reads column names inside the string, and allows `and`/`or` in plain words. It returns the same rows as a boolean mask.",
+  "docs_url": "https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.query.html",
+  "checker_type": "pandas_equal",
+  "checker_options": {},
+  "visual_type": "fade_out"
+}

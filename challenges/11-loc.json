@@ -1,0 +1,145 @@
+{
+  "slug": "loc",
+  "order": 11,
+  "level": 2,
+  "title": "Rows and columns by label",
+  "method": "loc",
+  "category": "Pick",
+  "language": "python",
+  "library": "pandas",
+  "source": "official",
+  "task": "Using labels, return rows 1 to 3 (inclusive) and only the columns `name` and `score`.",
+  "inputs": {
+    "df": {
+      "type": "dataframe",
+      "columns": [
+        "name",
+        "city",
+        "age",
+        "score"
+      ],
+      "data": [
+        [
+          "Ana",
+          "Paris",
+          34,
+          88
+        ],
+        [
+          "Ben",
+          "Rome",
+          28,
+          72
+        ],
+        [
+          "Cleo",
+          "Paris",
+          45,
+          95
+        ],
+        [
+          "Dev",
+          "Oslo",
+          31,
+          64
+        ],
+        [
+          "Eva",
+          "Rome",
+          52,
+          81
+        ],
+        [
+          "Finn",
+          "Oslo",
+          23,
+          90
+        ]
+      ]
+    }
+  },
+  "target": {
+    "type": "dataframe",
+    "columns": [
+      "name",
+      "score"
+    ],
+    "data": [
+      [
+        "Ben",
+        72
+      ],
+      [
+        "Cleo",
+        95
+      ],
+      [
+        "Dev",
+        64
+      ]
+    ],
+    "index": [
+      1,
+      2,
+      3
+    ]
+  },
+  "starter_code": "result = ",
+  "hint_1": "There is an indexer that selects by row label and column name at the same time.",
+  "hint_2": "result = df.___[_:_, [___, ___]]",
+  "example": {
+    "inputs": {
+      "books": {
+        "type": "dataframe",
+        "columns": [
+          "title",
+          "author",
+          "year",
+          "pages"
+        ],
+        "data": [
+          [
+            "Dune",
+            "Herbert",
+            1965,
+            412
+          ],
+          [
+            "Emma",
+            "Austen",
+            1815,
+            474
+          ],
+          [
+            "Ulysses",
+            "Joyce",
+            1922,
+            730
+          ],
+          [
+            "Beloved",
+            "Morrison",
+            1987,
+            324
+          ],
+          [
+            "Hamlet",
+            "Shakespeare",
+            1603,
+            104
+          ]
+        ]
+      }
+    },
+    "code": "result = books.loc[0:2, ['title', 'pages']]",
+    "note": ""
+  },
+  "reference_solution": "result = df.loc[1:3, ['name', 'score']]",
+  "why": "`.loc[rows, cols]` uses labels. Label slices include both ends, so `1:3` gives rows 1, 2 and 3.",
+  "docs_url": "https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.loc.html",
+  "checker_type": "pandas_equal",
+  "checker_options": {
+    "check_column_order": true
+  },
+  "visual_type": "fade_out"
+}

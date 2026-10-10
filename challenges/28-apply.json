@@ -1,0 +1,86 @@
+{
+  "slug": "apply",
+  "order": 28,
+  "level": 5,
+  "title": "Apply a function",
+  "method": "apply",
+  "category": "Transform",
+  "language": "python",
+  "library": "pandas",
+  "source": "official",
+  "task": "Label each temperature: `'hot'` if it is above 25, otherwise `'cold'`.",
+  "inputs": {
+    "df": {
+      "type": "dataframe",
+      "columns": [
+        "city",
+        "temp"
+      ],
+      "data": [
+        [
+          "Oslo",
+          4
+        ],
+        [
+          "Cairo",
+          31
+        ],
+        [
+          "Rome",
+          18
+        ],
+        [
+          "Lima",
+          26
+        ],
+        [
+          "Tokyo",
+          16
+        ]
+      ]
+    }
+  },
+  "target": {
+    "type": "series",
+    "name": "temp",
+    "data": [
+      "cold",
+      "hot",
+      "cold",
+      "hot",
+      "cold"
+    ]
+  },
+  "starter_code": "result = ",
+  "hint_1": "Write a small function that handles one value, and let pandas call it for each row.",
+  "hint_2": "result = df[___].apply(lambda t: ___ if t > __ else ___)",
+  "example": {
+    "inputs": {
+      "words": {
+        "type": "dataframe",
+        "columns": [
+          "word"
+        ],
+        "data": [
+          [
+            "cat"
+          ],
+          [
+            "elephant"
+          ],
+          [
+            "dog"
+          ]
+        ]
+      }
+    },
+    "code": "result = words['word'].apply(len)",
+    "note": ""
+  },
+  "reference_solution": "result = df['temp'].apply(lambda t: 'hot' if t > 25 else 'cold')",
+  "why": "`apply(func)` calls your function once per value. It is flexible but slower than vectorized math, so prefer math when you can.",
+  "docs_url": "https://pandas.pydata.org/docs/reference/api/pandas.Series.apply.html",
+  "checker_type": "pandas_equal",
+  "checker_options": {},
+  "visual_type": "scan"
+}

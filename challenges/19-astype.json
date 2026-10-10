@@ -1,0 +1,110 @@
+{
+  "slug": "astype",
+  "order": 19,
+  "level": 3,
+  "title": "Change a type",
+  "method": "astype",
+  "category": "Change",
+  "language": "python",
+  "library": "pandas",
+  "source": "official",
+  "task": "The `qty` column holds text. Convert it to integers (`int64`).",
+  "inputs": {
+    "df": {
+      "type": "dataframe",
+      "columns": [
+        "item",
+        "qty"
+      ],
+      "data": [
+        [
+          "pen",
+          "10"
+        ],
+        [
+          "book",
+          "2"
+        ],
+        [
+          "bag",
+          "1"
+        ],
+        [
+          "cup",
+          "4"
+        ],
+        [
+          "map",
+          "3"
+        ]
+      ]
+    }
+  },
+  "target": {
+    "type": "dataframe",
+    "columns": [
+      "item",
+      "qty"
+    ],
+    "data": [
+      [
+        "pen",
+        10
+      ],
+      [
+        "book",
+        2
+      ],
+      [
+        "bag",
+        1
+      ],
+      [
+        "cup",
+        4
+      ],
+      [
+        "map",
+        3
+      ]
+    ]
+  },
+  "starter_code": "result = ",
+  "hint_1": "Use the method that converts columns to another data type.",
+  "hint_2": "result = df.______({___: ___})",
+  "example": {
+    "inputs": {
+      "scores": {
+        "type": "dataframe",
+        "columns": [
+          "player",
+          "points"
+        ],
+        "data": [
+          [
+            "Ana",
+            3.0
+          ],
+          [
+            "Ben",
+            7.0
+          ],
+          [
+            "Cleo",
+            5.0
+          ]
+        ]
+      }
+    },
+    "code": "result = scores.astype({'points': 'int64'})",
+    "note": ""
+  },
+  "reference_solution": "result = df.astype({'qty': 'int64'})",
+  "why": "Text that looks like numbers is still text: '10' + '2' is '102'. `astype` converts each value so math works.",
+  "docs_url": "https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.astype.html",
+  "checker_type": "pandas_equal",
+  "checker_options": {
+    "check_dtype": true
+  },
+  "visual_type": "scan"
+}

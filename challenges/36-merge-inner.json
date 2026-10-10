@@ -1,0 +1,149 @@
+{
+  "slug": "merge-inner",
+  "order": 36,
+  "level": 7,
+  "title": "Match rows (inner)",
+  "method": "merge inner",
+  "category": "Combine",
+  "language": "python",
+  "library": "pandas",
+  "source": "official",
+  "task": "Combine employees (`left`) with departments (`right`) on `dept_id`, keeping only rows that match in both.",
+  "inputs": {
+    "left": {
+      "type": "dataframe",
+      "columns": [
+        "emp",
+        "dept_id"
+      ],
+      "data": [
+        [
+          "Ana",
+          1
+        ],
+        [
+          "Ben",
+          2
+        ],
+        [
+          "Cleo",
+          1
+        ],
+        [
+          "Dev",
+          3
+        ],
+        [
+          "Eva",
+          2
+        ]
+      ]
+    },
+    "right": {
+      "type": "dataframe",
+      "columns": [
+        "dept_id",
+        "dept"
+      ],
+      "data": [
+        [
+          1,
+          "Sales"
+        ],
+        [
+          2,
+          "IT"
+        ],
+        [
+          4,
+          "Legal"
+        ]
+      ]
+    }
+  },
+  "target": {
+    "type": "dataframe",
+    "columns": [
+      "emp",
+      "dept_id",
+      "dept"
+    ],
+    "data": [
+      [
+        "Ana",
+        1,
+        "Sales"
+      ],
+      [
+        "Ben",
+        2,
+        "IT"
+      ],
+      [
+        "Cleo",
+        1,
+        "Sales"
+      ],
+      [
+        "Eva",
+        2,
+        "IT"
+      ]
+    ]
+  },
+  "starter_code": "result = ",
+  "hint_1": "Join the two tables on their shared key column; the default kind of join keeps only matches.",
+  "hint_2": "result = left._____(right, on=___)",
+  "example": {
+    "inputs": {
+      "orders": {
+        "type": "dataframe",
+        "columns": [
+          "order",
+          "cust"
+        ],
+        "data": [
+          [
+            1,
+            "c1"
+          ],
+          [
+            2,
+            "c2"
+          ],
+          [
+            3,
+            "c9"
+          ]
+        ]
+      },
+      "customers": {
+        "type": "dataframe",
+        "columns": [
+          "cust",
+          "city"
+        ],
+        "data": [
+          [
+            "c1",
+            "Rome"
+          ],
+          [
+            "c2",
+            "Oslo"
+          ]
+        ]
+      }
+    },
+    "code": "result = orders.merge(customers, on='cust')",
+    "note": ""
+  },
+  "reference_solution": "result = left.merge(right, on='dept_id')",
+  "why": "An inner merge keeps a row only when its key exists on both sides. Dev (dept 3) and Legal (dept 4) have no partner, so they disappear.",
+  "docs_url": "https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.merge.html",
+  "checker_type": "pandas_equal",
+  "checker_options": {
+    "check_index": false
+  },
+  "visual_type": "connect"
+}

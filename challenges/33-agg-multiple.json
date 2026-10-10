@@ -1,0 +1,113 @@
+{
+  "slug": "agg-multiple",
+  "order": 33,
+  "level": 6,
+  "title": "Several statistics",
+  "method": "agg",
+  "category": "Summarize",
+  "language": "python",
+  "library": "pandas",
+  "source": "official",
+  "task": "For each department, return the minimum and maximum `salary` (columns `min` and `max`).",
+  "inputs": {
+    "df": {
+      "type": "dataframe",
+      "columns": [
+        "dept",
+        "name",
+        "salary"
+      ],
+      "data": [
+        [
+          "IT",
+          "Ana",
+          52
+        ],
+        [
+          "HR",
+          "Ben",
+          41
+        ],
+        [
+          "IT",
+          "Cleo",
+          67
+        ],
+        [
+          "HR",
+          "Dev",
+          38
+        ],
+        [
+          "IT",
+          "Eva",
+          58
+        ]
+      ]
+    }
+  },
+  "target": {
+    "type": "dataframe",
+    "columns": [
+      "min",
+      "max"
+    ],
+    "data": [
+      [
+        38,
+        41
+      ],
+      [
+        52,
+        67
+      ]
+    ],
+    "index": [
+      "HR",
+      "IT"
+    ],
+    "index_name": "dept"
+  },
+  "starter_code": "result = ",
+  "hint_1": "After grouping, one method accepts a list of function names and makes one column per function.",
+  "hint_2": "result = df.groupby(___)[___].___([___, ___])",
+  "example": {
+    "inputs": {
+      "sales": {
+        "type": "dataframe",
+        "columns": [
+          "shop",
+          "amount"
+        ],
+        "data": [
+          [
+            "north",
+            20
+          ],
+          [
+            "south",
+            35
+          ],
+          [
+            "north",
+            15
+          ],
+          [
+            "south",
+            5
+          ]
+        ]
+      }
+    },
+    "code": "result = sales.groupby('shop')['amount'].agg(['sum', 'mean'])",
+    "note": ""
+  },
+  "reference_solution": "result = df.groupby('dept')['salary'].agg(['min', 'max'])",
+  "why": "`agg([...])` runs every function on every group, so you get one row per group and one column per function.",
+  "docs_url": "https://pandas.pydata.org/docs/reference/api/pandas.api.typing.SeriesGroupBy.agg.html",
+  "checker_type": "pandas_equal",
+  "checker_options": {
+    "check_column_order": true
+  },
+  "visual_type": "collapse"
+}
